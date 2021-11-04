@@ -9,9 +9,9 @@ let Game = {
 let bug
 
 let reset = () => {
+  Game.hits = []
   Game.timestamp = millis()
   Game.scenes.showNextScene()
-  Game.hits = []
 }
 
 function preload() {
@@ -42,16 +42,12 @@ function draw() {
   Game.hits.forEach((h) => {
     if (h) console.log(h)
   })
-
-  console.log(Game.timestamp)
 }
 
 function doubleClicked() {
   Game.scenes.handleEvent('doubleClicked')
-  Game.scenes.showScene(Home)
   bug.reacting = true
-  Game.timestamp = millis()
-  Game.hits = []
+  reset()
 }
 
 // function HomeScene() {

@@ -10,8 +10,12 @@ class Twitter {
     fill(255)
     noStroke()
 
+    this.shapes.forEach((s, i) => {
+      s.draw()
+      Game.hits[i] = collideRectCircle(s.pos.x, s.pos.y, s.w, s.h, bug.pos.x, bug.pos.y, bug.radius)
+    })
+
     this.update()
-    this.shapes.forEach(s => s.draw())
   }
 
   update() {
