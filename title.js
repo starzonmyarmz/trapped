@@ -1,6 +1,5 @@
 class Title {
   constructor() {
-    this.complete = false
   }
 
   draw() {
