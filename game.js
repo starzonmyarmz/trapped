@@ -8,7 +8,12 @@ let Game = {
 
 let bug
 
-let reset = () => {
+let ellapsed = (min, max) => {
+  const el = millis() - Game.timestamp
+  return el > min && el < (max || 999999)
+}
+
+let endScene = () => {
   Game.hits = []
   Game.timestamp = millis()
   Game.scenes.showNextScene()
@@ -47,12 +52,5 @@ function draw() {
 function doubleClicked() {
   Game.scenes.handleEvent('doubleClicked')
   bug.reacting = true
-  reset()
+  endScene()
 }
-
-// function HomeScene() {
-  // home = new Home()
-  //   home.shapes.forEach((s, i) => {
-  //     Game.hits[i] = collideRectCircle(s.pos.x, s.pos.y, s.w, s.h, bug.pos.x, bug.pos.y, bug.radius)
-  //   })
-// }

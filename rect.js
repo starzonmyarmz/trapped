@@ -1,12 +1,11 @@
 class Rect {
-  constructor(x, y, w, h, radius, offset_x = 0, offset_y = 0) {
+  constructor(x, y, w, h, radius = 0, alpha = 1) {
     this.pos = createVector(x, y)
     this.vel = createVector(0, 0)
     this.w = w
     this.h = h
     this.radius = radius
-    this.offset_x = offset_x
-    this.offset_y = offset_y
+    this.alpha = alpha
   }
 
   draw() {
@@ -14,7 +13,7 @@ class Rect {
     rect(this.pos.x, this.pos.y, this.w, this.h, this.radius)
   }
 
-  updateCoords(x, y) {
+  updateCoordinates(x, y) {
     this.vel.set(x, y)
     this.pos.add(x, y)
   }
@@ -22,5 +21,9 @@ class Rect {
   updateDimensions(w, h) {
     this.w += w
     this.h += h
+  }
+
+  updateAlpha(alpha) {
+    this.alpha += alpha
   }
 }

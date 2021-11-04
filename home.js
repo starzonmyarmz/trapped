@@ -1,9 +1,9 @@
 class Home {
   constructor() {
     this.shapes = [
-      new Rect(48, 48, 64, 64, 0),
-      new Rect(124, 48, 64, 64, 0),
-      new Rect(202, 48, 64, 64, 0)
+      [new Rect(48, 48, 64, 64), [2000, 4000, 'xy', -1, 0], [2000, 3000, 'wh', -.5, 0], [4000, 6000, 'xy', 0, 2], [6000, null, 'end']],
+      [new Rect(124, 48, 64, 64), [2000, 4000, 'xy', -1, 0], [2000, 3000, 'wh', -.5, 0], [4000, 6000, 'xy', 0, 2], [6000, null, 'end']],
+      [new Rect(202, 48, 64, 64), [2000, 4000, 'xy', -1, 0], [2000, 3000, 'wh', -.5, 0], [4000, 6000, 'xy', 0, 2], [6000, null, 'end']]
     ]
   }
 
@@ -12,25 +12,37 @@ class Home {
     noStroke()
 
     this.shapes.forEach((s, i) => {
-      s.draw()
-      Game.hits[i] = collideRectCircle(s.pos.x, s.pos.y, s.w, s.h, bug.pos.x, bug.pos.y, bug.radius)
+      s[0].draw()
+
+      Game.hits[i] = collideRectCircle(
+        s[0].pos.x, s[0].pos.y, s[0].w, s[0].h,
+        bug.pos.x, bug.pos.y, bug.radius
+      )
     })
 
     this.update()
   }
 
   update() {
-    const ellapsed = millis() - Game.timestamp
-
-    if (ellapsed > 2000 && ellapsed < 4000) {
-
-      this.shapes.forEach((s) => {
-        s.updateCoords(-1, 0)
-      })
-    }
-
-    if (ellapsed > 6000) {
-      reset()
-    }
+    this.shapes.forEach((s) => {
+      for (let i = 1; i < s.length; i++) {
+        if (ellapsed(s[i][0], s[i][1])) {
+          switch (s[i][2]) {
+            case 'a':
+              s[0].updateAlpha(s[i][3], s[i][4])
+              break
+            case 'wh':
+              s[0].updateDimensions(s[i][3], s[i][4])
+              break
+            case 'xy':
+              s[0].updateCoordinates(s[i][3], s[i][4])
+              break
+            case 'end':
+              endScene()
+              break
+          }
+        }
+      }
+    })
   }
 }
