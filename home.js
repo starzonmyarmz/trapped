@@ -5,7 +5,6 @@ class Home {
       new Rect(124, 48, 64, 64, 0),
       new Rect(202, 48, 64, 64, 0)
     ]
-    this.start_time = timestamp
   }
 
   draw() {
@@ -17,7 +16,7 @@ class Home {
   }
 
   update() {
-    const ellapsed = millis() - timestamp
+    const ellapsed = millis() - Game.timestamp
 
     if (ellapsed > 2000 && ellapsed < 4000) {
 
@@ -27,9 +26,7 @@ class Home {
     }
 
     if (ellapsed > 6000) {
-      console.log('home done')
-      timestamp = millis()
-      scenes.showNextScene()
+      reset()
     }
   }
 }

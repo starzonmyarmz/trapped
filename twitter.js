@@ -15,15 +15,14 @@ class Twitter {
   }
 
   update() {
-    const ellapsed = millis() - timestamp
+    const ellapsed = millis() - Game.timestamp
 
     if (ellapsed > 2000 && ellapsed < 4000) {
       this.shapes.forEach(s => s.updateCoords(0, 2))
     }
 
     if (ellapsed > 6000) {
-      timestamp = millis()
-      console.log('twitter done')
+      reset()
     }
   }
 }

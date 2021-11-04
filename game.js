@@ -1,60 +1,62 @@
-let WIDTH = 320
-let HEIGHT = 480
+let Game = {
+  width: 320,
+  height: 480,
+  scenes: null,
+  timestamp: 0,
+  hits: []
+}
 
-let scenes
-let timestamp
 let bug
-let title, home, twitter
-let hits = []
+
+let reset = () => {
+  Game.timestamp = millis()
+  Game.scenes.showNextScene()
+  Game.hits = []
+}
 
 function preload() {
 
 }
 
 function setup() {
-  createCanvas(WIDTH, HEIGHT)
+  createCanvas(Game.width, Game.height)
 
-  scenes = new SceneManager()
+  Game.scenes = new SceneManager()
 
-  scenes.addScene(Title)
-  scenes.addScene(Home)
-  scenes.addScene(Twitter)
+  Game.scenes.addScene(Title)
+  Game.scenes.addScene(Home)
+  Game.scenes.addScene(Twitter)
 
-  bug = new Bug(WIDTH / 2, HEIGHT / 2)
+  bug = new Bug(Game.width / 2, Game.height / 2)
 
-  scenes.showScene(Title)
+  Game.scenes.showScene(Title)
 }
 
 function draw() {
   background(0)
-  scenes.draw()
+  Game.scenes.draw()
 
   bug.draw()
   bug.update(mouseX, mouseY)
 
-  hits.forEach((h) => {
+  Game.hits.forEach((h) => {
     if (h) console.log(h)
   })
 
-  console.log(timestamp)
+  console.log(Game.timestamp)
 }
 
 function doubleClicked() {
-  scenes.handleEvent('doubleClicked')
-  scenes.showScene(Home)
+  Game.scenes.handleEvent('doubleClicked')
+  Game.scenes.showScene(Home)
   bug.reacting = true
-  timestamp = millis()
-  hits = []
+  Game.timestamp = millis()
+  Game.hits = []
 }
 
 // function HomeScene() {
   // home = new Home()
-  //   hits = []
-  //   home.setTimeStart(millis())
-  //   home.draw()
-  //   home.update(millis())
-  //
   //   home.shapes.forEach((s, i) => {
-  //     hits[i] = collideRectCircle(s.pos.x, s.pos.y, s.w, s.h, bug.pos.x, bug.pos.y, bug.radius)
+  //     Game.hits[i] = collideRectCircle(s.pos.x, s.pos.y, s.w, s.h, bug.pos.x, bug.pos.y, bug.radius)
   //   })
 // }
