@@ -30,6 +30,7 @@ function setup() {
 
   Game.scenes.addScene(Title)
   Game.scenes.addScene(Home)
+  Game.scenes.addScene(Text)
   Game.scenes.addScene(Twitter)
 
   bug = new Bug(Game.width / 2, Game.height / 2)

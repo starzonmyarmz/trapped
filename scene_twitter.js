@@ -12,20 +12,22 @@ class Twitter {
 
     this.shapes.forEach((s, i) => {
       s.draw()
-      Game.hits[i] = collideRectCircle(s.pos.x, s.pos.y, s.w, s.h, bug.pos.x, bug.pos.y, bug.radius)
+
+      Game.hits[i] = collideRectCircle(
+        s.pos.x, s.pos.y, s.w, s.h,
+        bug.pos.x, bug.pos.y, bug.radius
+      )
     })
 
     this.update()
   }
 
   update() {
-    const ellapsed = millis() - Game.timestamp
-
-    if (ellapsed > 2000 && ellapsed < 4000) {
+    if (ellapsed() > 2000 && ellapsed() < 4000) {
       this.shapes.forEach(s => s.updateCoords(0, 2))
     }
 
-    if (ellapsed > 6000) {
+    if (ellapsed() > 6000) {
       reset()
     }
   }
