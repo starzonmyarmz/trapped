@@ -1,3 +1,5 @@
+const params = new URLSearchParams(window.location.search)
+
 let Game = {
   width: 320,
   height: 480,
@@ -6,6 +8,7 @@ let Game = {
   hits: [],
   shapes: [],
   over: false,
+  debug: params.get('debug') ? true : false
 }
 
 let bug
@@ -23,14 +26,16 @@ let endScene = () => {
 }
 
 function preload() {
-
 }
 
 function setup() {
+  if (Game.debug) {
+    document.querySelector('html').classList.add('debug')
+  }
+
   createCanvas(Game.width, Game.height)
 
   Game.scenes = new SceneManager()
-
   Game.scenes.addScene(Title)
   Game.scenes.addScene(Home)
   Game.scenes.addScene(Text)
@@ -43,6 +48,7 @@ function setup() {
 
 function draw() {
   background(0)
+
   Game.scenes.draw()
 
   bug.draw()
@@ -58,6 +64,13 @@ function draw() {
   Game.hits.forEach((h) => {
     if (h) Game.over = true
   })
+
+  if (Game.debug) {
+    fill('red')
+    textSize(24)
+    textAlign(LEFT, TOP)
+    text(int(frameRate()), 0, 0)
+  }
 }
 
 function doubleClicked() {
