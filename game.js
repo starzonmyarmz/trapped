@@ -3,7 +3,9 @@ let Game = {
   height: 480,
   scenes: null,
   timestamp: 0,
-  hits: []
+  hits: [],
+  shapes: [],
+  over: false,
 }
 
 let bug
@@ -15,6 +17,7 @@ let ellapsed = (min, max) => {
 
 let endScene = () => {
   Game.hits = []
+  Game.shapes = []
   Game.timestamp = millis()
   Game.scenes.showNextScene()
 }
@@ -45,8 +48,15 @@ function draw() {
   bug.draw()
   bug.update(mouseX, mouseY)
 
+  if (Game.over) {
+    Game.shapes.forEach((s) => {
+      s[0].vel.add(s[0].acc)
+      s[0].pos.add(s[0].vel)
+    })
+  }
+
   Game.hits.forEach((h) => {
-    if (h) console.log(h)
+    if (h) Game.over = true
   })
 }
 

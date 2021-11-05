@@ -36,7 +36,9 @@ class Home {
   }
 
   draw() {
-    this.shapes.forEach((s, i) => {
+    Game.shapes = this.shapes
+
+    Game.shapes.forEach((s, i) => {
       s[0].draw('255, 255, 255')
 
       Game.hits[i] = collideRectCircle(
@@ -49,7 +51,7 @@ class Home {
   }
 
   update() {
-    this.shapes.forEach((s) => {
+    Game.shapes.forEach((s) => {
       for (let i = 1; i < s.length; i++) {
         if (ellapsed(s[i][0], s[i][1])) {
           switch (s[i][2]) {

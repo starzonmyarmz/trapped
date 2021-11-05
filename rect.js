@@ -2,6 +2,7 @@ class Rect {
   constructor(x, y, w, h, alpha = 1) {
     this.pos = createVector(x, y)
     this.vel = createVector(0, 0)
+    this.acc = p5.Vector.random2D()
     this.w = w
     this.h = h
     this.alpha = alpha
@@ -15,7 +16,7 @@ class Rect {
 
   updateCoordinates(x, y) {
     this.vel.set(x, y)
-    this.pos.add(x, y)
+    this.pos.add(this.vel)
   }
 
   updateDimensions(w, h) {
