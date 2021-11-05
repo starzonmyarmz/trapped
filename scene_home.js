@@ -36,11 +36,8 @@ class Home {
   }
 
   draw() {
-    fill(255)
-    noStroke()
-
     this.shapes.forEach((s, i) => {
-      s[0].draw()
+      s[0].draw('255, 255, 255')
 
       Game.hits[i] = collideRectCircle(
         s[0].pos.x, s[0].pos.y, s[0].w, s[0].h,

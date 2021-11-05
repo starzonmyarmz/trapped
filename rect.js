@@ -7,8 +7,9 @@ class Rect {
     this.alpha = alpha
   }
 
-  draw() {
-    fill(`rgba(255, 255, 255, ${this.alpha})`)
+  draw(color) {
+    noStroke()
+    fill(`rgba(${color}, ${this.alpha})`)
     rect(this.pos.x, this.pos.y, this.w, this.h)
   }
 
