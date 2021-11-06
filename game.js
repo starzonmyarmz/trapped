@@ -4,6 +4,8 @@ let Game = {
   width: 320,
   height: 480,
   scenes: null,
+  permission: false,
+  input: 'mouse',
   timestamp: 0,
   hits: [],
   shapes: [],
@@ -26,12 +28,40 @@ let endScene = () => {
   Game.scenes.showNextScene()
 }
 
+const requestAccess = () => {
+  DeviceMotionEvent.requestPermission()
+    .then(response => {
+      if (response == 'granted') {
+        Game.permission = true
+        document.getElementById('permission').hidden = Game.permission
+      } else {
+        Game.permission = false
+      }
+    })
+    .catch(console.error)
+}
+
 function preload() {
 }
 
 function setup() {
   if (Game.debug) {
     document.querySelector('html').classList.add('debug')
+
+  if (typeof(DeviceMotionEvent) !== 'undefined' && typeof(DeviceMotionEvent.requestPermission) === 'function' ) {
+    DeviceMotionEvent.requestPermission()
+      .catch(() => {
+        document.getElementById('permission').hidden = false
+        let button = document.getElementById('request')
+        button.addEventListener('click', requestAccess)
+        throw error
+      })
+      .then(() => {
+        Game.permission = true
+        document.getElementById('permission').hidden = Game.permission
+      })
+  } else {
+    Game.permission = true
   }
 
   createCanvas(Game.width, Game.height)
@@ -54,11 +84,22 @@ function setup() {
 }
 
 function draw() {
+  if (!Game.permission) return
+
   background(0)
 
   Game.scenes.draw()
   Game.bug.draw()
   Game.bug.update(mouseX, mouseY)
+  if (Game.input === 'touch') {
+    rX = (rotationY * 7.5) + (width / 2)
+    rY = (rotationX * 15) + (height / 2)
+    Game.bug.update(rX, rY)
+  }
+
+  if (Game.input === 'mouse') {
+    Game.bug.update(mouseX, mouseY)
+  }
 
   if (Game.over) {
     Game.shapes.forEach((s) => {
