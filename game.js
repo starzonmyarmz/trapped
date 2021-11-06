@@ -7,11 +7,11 @@ let Game = {
   timestamp: 0,
   hits: [],
   shapes: [],
+  bug: null,
   over: false,
   debug: params.get('debug') ? true : false
 }
 
-let bug
 
 let ellapsed = (min, max) => {
   const el = millis() - Game.timestamp
@@ -41,7 +41,7 @@ function setup() {
   Game.scenes.addScene(Text)
   Game.scenes.addScene(Twitter)
 
-  bug = new Bug(Game.width / 2, Game.height / 2)
+  Game.bug = new Bug(Game.width / 2, Game.height / 2)
 
   Game.scenes.showScene(Title)
 }
@@ -50,9 +50,8 @@ function draw() {
   background(0)
 
   Game.scenes.draw()
-
-  bug.draw()
-  bug.update(mouseX, mouseY)
+  Game.bug.draw()
+  Game.bug.update(mouseX, mouseY)
 
   if (Game.over) {
     Game.shapes.forEach((s) => {

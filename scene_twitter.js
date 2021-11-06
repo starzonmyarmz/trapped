@@ -15,7 +15,7 @@ class Twitter {
 
       Game.hits[i] = collideRectCircle(
         s.pos.x, s.pos.y, s.w, s.h,
-        bug.pos.x, bug.pos.y, bug.radius
+        Game.bug.pos.x, Game.bug.pos.y, Game.bug.radius
       )
     })
 

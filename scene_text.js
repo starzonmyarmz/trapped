@@ -38,7 +38,7 @@ class Text {
 
       Game.hits[i] = collideRectCircle(
         s[0].pos.x, s[0].pos.y, s[0].w, s[0].h,
-        bug.pos.x, bug.pos.y, bug.radius
+        Game.bug.pos.x, Game.bug.pos.y, Game.bug.radius
       )
     })
 
