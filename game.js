@@ -91,9 +91,6 @@ function draw() {
 
   background(0)
 
-  Game.scenes.draw()
-  Game.bug.draw()
-  Game.bug.update(mouseX, mouseY)
   if (Game.input === 'touch') {
     rX = (rotationY * 7.5) + (width / 2)
     rY = (rotationX * 15) + (height / 2)
@@ -114,6 +111,9 @@ function draw() {
   Game.hits.forEach((h) => {
     if (h) Game.over = true
   })
+
+  Game.scenes.draw()
+  Game.bug.draw()
 
   if (Game.debug) {
     document.getElementById('debug').innerHTML = `
