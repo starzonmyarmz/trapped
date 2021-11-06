@@ -25,11 +25,32 @@
       }
 
       canvas {
-        display: block
+        display: block;
       }
 
       .debug canvas {
         border: 1px solid red;
+      }
+
+      .alert {
+        background: #000;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+        z-index: 10;
+      }
+
+      #orientation {
+        display: none;
+      }
+
+      @media (orientation: landscape) {
+        html:not(.debug) #orientation {
+          display: grid;
+          place-items: center;
+        }
       }
     </style>
 
@@ -46,5 +67,8 @@
     <script src="game.js"></script>
   </head>
   <body>
+    <div id="orientation" class="alert">
+      This game runs needs to run in portrait mode
+    </div>
   </body>
 </html>
