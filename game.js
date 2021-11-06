@@ -47,6 +47,9 @@ function preload() {
 function setup() {
   if (Game.debug) {
     document.querySelector('html').classList.add('debug')
+    document.body.insertAdjacentHTML('afterBegin', '<div id="debug"></div>')
+    document.getElementById('debug')
+  }
 
   if (typeof(DeviceMotionEvent) !== 'undefined' && typeof(DeviceMotionEvent.requestPermission) === 'function' ) {
     DeviceMotionEvent.requestPermission()
@@ -113,10 +116,12 @@ function draw() {
   })
 
   if (Game.debug) {
-    fill('red')
-    textSize(24)
-    textAlign(LEFT, TOP)
-    text(int(frameRate()), 0, 0)
+    document.getElementById('debug').innerHTML = `
+      Frames: ${int(frameRate())} <br>
+      ${Game.input === 'touch' ? 'Rotation: ' + int(rX) + ', ' + int(rY) : ''}
+      ${Game.input === 'mouse' ? 'Mouse: ' + int(mouseX) + ', ' + int(mouseY) : ''} <br>
+      Shapes: ${Game.shapes.length}
+    `
   }
 }
 
