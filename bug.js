@@ -4,7 +4,7 @@ class Bug {
     this.vel = createVector(0, 0)
     this.acc = createVector(0, 0)
     this.radius = 8
-    this.reacting = false
+    this.hidden = true
   }
 
   draw() {
@@ -15,7 +15,7 @@ class Bug {
   }
 
   update(x, y) {
-    if (this.reacting) {
+    if (!this.hidden) {
       const mouse = createVector(x, y)
 
       mouse.sub(this.pos)

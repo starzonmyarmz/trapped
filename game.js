@@ -11,6 +11,7 @@ let Game = {
   shapes: [],
   bug: null,
   over: false,
+  title_active: false,
   debug: params.get('debug') ? true : false
 }
 
@@ -24,6 +25,7 @@ let ellapsed = (min, max) => {
 let endScene = () => {
   Game.hits = []
   Game.shapes = []
+  Game.title_active = false
   Game.timestamp = millis()
   Game.scenes.showNextScene()
 }
@@ -42,6 +44,7 @@ const requestAccess = () => {
 }
 
 function preload() {
+  img = loadImage('./fly.png')
 }
 
 function setup() {
@@ -70,6 +73,7 @@ function setup() {
   createCanvas(Game.width, Game.height)
 
   Game.scenes = new SceneManager()
+  Game.scenes.addScene(Intro)
   Game.scenes.addScene(Title)
   Game.scenes.addScene(Home)
   Game.scenes.addScene(Text)
@@ -77,13 +81,13 @@ function setup() {
 
   Game.bug = new Bug(Game.width / 2, Game.height / 2)
 
-  Game.scenes.showScene(Title)
   hammer = new Hammer(document.body, { preventDefault: true })
   hammer.get('swipe').set({
     direction: Hammer.DIRECTION_ALL
   })
   hammer.on('swipe', swiped)
 
+  Game.scenes.showScene(Intro)
 }
 
 function draw() {
@@ -134,3 +138,9 @@ function swiped(event) {
     if (Game.title_active) endScene()
   }
 }
+
+
+//           window.addEventListener( "devicemotion", (e) => {
+//             document.getElementById('out').innerHTML = e
+//             console.log(e)
+//           })

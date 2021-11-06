@@ -16,7 +16,8 @@
 
       body {
         background: #000;
-        margin: 0
+        color: #fff;
+        margin: 0;
       }
 
       main {
@@ -52,6 +53,14 @@
           place-items: center;
         }
       }
+
+      #debug {
+        color: red;
+        font-size: 12px;
+        left: 0;
+        position: fixed;
+        top: 0;
+      }
     </style>
 
     <script src="bug.js"></script>
@@ -60,6 +69,7 @@
     <script src="p5.collide2d.js"></script>
     <script src="p5.scenemanager.js"></script>
     <script src="rect.js"></script>
+    <script src="scene_intro.js"></script>
     <script src="scene_home.js"></script>
     <script src="scene_text.js"></script>
     <script src="scene_title.js"></script>
@@ -69,6 +79,10 @@
   <body>
     <div id="orientation" class="alert">
       This game runs needs to run in portrait mode
+    </div>
+    <div id="permission" class="alert" hidden>
+      This game needs permission to use your phones sensors
+      <button id="request">Request permissions</button>
     </div>
   </body>
 </html>
