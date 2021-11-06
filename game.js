@@ -12,6 +12,7 @@ let Game = {
   debug: params.get('debug') ? true : false
 }
 
+let img, hammer
 
 let ellapsed = (min, max) => {
   const el = millis() - Game.timestamp
@@ -44,6 +45,12 @@ function setup() {
   Game.bug = new Bug(Game.width / 2, Game.height / 2)
 
   Game.scenes.showScene(Title)
+  hammer = new Hammer(document.body, { preventDefault: true })
+  hammer.get('swipe').set({
+    direction: Hammer.DIRECTION_ALL
+  })
+  hammer.on('swipe', swiped)
+
 }
 
 function draw() {
@@ -72,8 +79,12 @@ function draw() {
   }
 }
 
-function doubleClicked() {
-  Game.scenes.handleEvent('doubleClicked')
-  bug.reacting = true
-  endScene()
+function swiped(event) {
+  if (event.direction == 2) {
+
+  }
+
+  if (event.direction == 4) {
+    if (Game.title_active) endScene()
+  }
 }

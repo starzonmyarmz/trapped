@@ -41,10 +41,12 @@ class Home {
     Game.shapes.forEach((s, i) => {
       s[0].draw('255, 255, 255')
 
-      Game.hits[i] = collideRectCircle(
-        s[0].pos.x, s[0].pos.y, s[0].w, s[0].h,
-      )
+      if (s[0].alpha > 0.75) {
+        Game.hits[i] = collideRectCircle(
+          s[0].pos.x, s[0].pos.y, s[0].w, s[0].h,
           Game.bug.pos.x, Game.bug.pos.y, Game.bug.radius
+        )
+      }
     })
 
     this.update()
@@ -53,10 +55,14 @@ class Home {
   update() {
     Game.shapes.forEach((s) => {
       for (let i = 1; i < s.length; i++) {
-        if (ellapsed(s[i][0], s[i][1])) {
-          switch (s[i][2]) {
+        const start_time = s[i][0]
+        const end_time = s[i][1]
+        const prop = s[i][2]
+
+        if (ellapsed(start_time, end_time)) {
+          switch (prop) {
             case 'a':
-              s[0].updateAlpha(s[i][3], s[i][4])
+              s[0].updateAlpha(s[i][3])
               break
             case 'wh':
               s[0].updateDimensions(s[i][3], s[i][4])
