@@ -98,11 +98,17 @@ function draw() {
   if (Game.input === 'touch') {
     rX = (rotationY * 7.5) + (width / 2)
     rY = (rotationX * 15) + (height / 2)
-    Game.bug.update(rX, rY)
+    Game.bug.update(
+      constrain(rX, 0, Game.width),
+      constrain(rY, 0, Game.height)
+    )
   }
 
   if (Game.input === 'mouse') {
-    Game.bug.update(mouseX, mouseY)
+    Game.bug.update(
+      constrain(mouseX, 0, Game.width),
+      constrain(mouseY, 0, Game.height)
+    )
   }
 
   if (Game.over) {
