@@ -5,7 +5,7 @@ let Game = {
   height: 480,
   scenes: null,
   permission: false,
-  input: 'mouse',
+  input: params.get('input') === 'mouse' ? 'mouse' : 'touch',
   timestamp: 0,
   hits: [],
   shapes: [],
