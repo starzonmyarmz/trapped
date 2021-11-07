@@ -54,6 +54,7 @@ function setup() {
     document.getElementById('debug')
   }
 
+  // Check for DeviceMotionEvent and Permissions
   if (typeof(DeviceMotionEvent) !== 'undefined' && typeof(DeviceMotionEvent.requestPermission) === 'function' ) {
     DeviceMotionEvent.requestPermission()
       .catch(() => {
@@ -70,8 +71,7 @@ function setup() {
     Game.permission = true
   }
 
-  createCanvas(Game.width, Game.height)
-
+  // Add scenes to p5.scenemanager
   Game.scenes = new SceneManager()
   Game.scenes.addScene(Intro)
   Game.scenes.addScene(Title)
@@ -79,14 +79,16 @@ function setup() {
   Game.scenes.addScene(Text)
   Game.scenes.addScene(Twitter)
 
-  Game.bug = new Bug(Game.width / 2, Game.height / 2)
-
+  // Set up touch events with hammer.js
   hammer = new Hammer(document.body, { preventDefault: true })
   hammer.get('swipe').set({
     direction: Hammer.DIRECTION_ALL
   })
   hammer.on('swipe', swiped)
 
+  // Start this party
+  createCanvas(Game.width, Game.height)
+  Game.bug = new Bug(Game.width / 2, Game.height / 2)
   Game.scenes.showScene(Intro)
 }
 
@@ -95,6 +97,7 @@ function draw() {
 
   background(0)
 
+  // Handle Device rotation inputs
   if (Game.input === 'touch') {
     rX = (rotationY * 7.5) + (width / 2)
     rY = (rotationX * 15) + (height / 2)
@@ -104,6 +107,7 @@ function draw() {
     )
   }
 
+  // Handle mouse inputs
   if (Game.input === 'mouse') {
     Game.bug.update(
       constrain(mouseX, 0, Game.width),
@@ -111,6 +115,12 @@ function draw() {
     )
   }
 
+  // If there's collision…
+  Game.hits.forEach((h) => {
+    if (h) Game.over = true
+  })
+
+  // …then the game is over
   if (Game.over) {
     Game.shapes.forEach((s) => {
       s[0].vel.add(s[0].acc)
@@ -118,10 +128,7 @@ function draw() {
     })
   }
 
-  Game.hits.forEach((h) => {
-    if (h) Game.over = true
-  })
-
+  // Draw all the things
   Game.scenes.draw()
   Game.bug.draw()
 
