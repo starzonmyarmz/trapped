@@ -152,9 +152,3 @@ function swiped(event) {
     if (Game.title_active) endScene()
   }
 }
-
-
-//           window.addEventListener( "devicemotion", (e) => {
-//             document.getElementById('out').innerHTML = e
-//             console.log(e)
-//           })
