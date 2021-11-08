@@ -1,81 +1,67 @@
 class Home {
   constructor() {
     this.shapes = [
-      [new Rect(24, 24, 124, 124, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(172, 24, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(246, 24, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(172, 98, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(246, 98, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(24, 172, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(98, 172, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(172, 172, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(246, 172, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(24, 246, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(98, 246, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(172, 246, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(246, 246, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(24, 320, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(98, 320, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(172, 320, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(246, 320, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
+      // Screen 1
+      new Poly({ x: 25, y: 25, w: 122, h: 122 }, [{ delay: 4000, duration: 300, props: { x: 25 - Game.width }}, { delay: 2000, duration: 301, props: { x: 25 - Game.width * 2 } }]),
+      new Poly({ x: 173, y: 25, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 173 - Game.width }}, { delay: 2000, duration: 301, props: { x: 173 - Game.width * 2 } }]),
+      new Poly({ x: 247, y: 25, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 247 - Game.width }}, { delay: 2000, duration: 301, props: { x: 247 - Game.width * 2 } }]),
+      new Poly({ x: 173, y: 99, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 173 - Game.width }}, { delay: 2000, duration: 301, props: { x: 173 - Game.width * 2 } }]),
+      new Poly({ x: 247, y: 99, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 247 - Game.width }}, { delay: 2000, duration: 301, props: { x: 247 - Game.width * 2 } }]),
+      new Poly({ x: 25, y: 173, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 25 - Game.width }}, { delay: 2000, duration: 301, props: { x: 25 - Game.width * 2 } }]),
+      new Poly({ x: 99, y: 173, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 99 - Game.width }}, { delay: 2000, duration: 301, props: { x: 99 - Game.width * 2 } }]),
+      new Poly({ x: 173, y: 173, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 173 - Game.width }}, { delay: 2000, duration: 301, props: { x: 173 - Game.width * 2 } }]),
+      new Poly({ x: 247, y: 173, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 247 - Game.width }}, { delay: 2000, duration: 301, props: { x: 247 - Game.width * 2 } }]),
+      new Poly({ x: 25, y: 247, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 25 - Game.width }}, { delay: 2000, duration: 301, props: { x: 25 - Game.width * 2 } }]),
+      new Poly({ x: 99, y: 247, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 99 - Game.width }}, { delay: 2000, duration: 301, props: { x: 99 - Game.width * 2 } }]),
 
-      [new Rect(Game.width - 24 + 24, 24, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(Game.width - 24 + 98, 24, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(Game.width - 24 + 172, 24, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(Game.width - 24 + 246, 24, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(Game.width - 24 + 24, 98, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(Game.width - 24 + 98, 98, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(Game.width - 24 + 172, 98, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(Game.width - 24 + 246, 98, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(Game.width - 24 + 24, 172, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
-      [new Rect(Game.width - 24 + 98, 172, 50, 50, 0), [2000, 4000, 'a', 0.009], [5000, 5500, 'xy', -10, 0]],
+      // Screen 2
+      new Poly({ x: Game.width + 25, y: 25, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 25 }}, { delay: 2000, duration: 301, props: { x: 25 - Game.width } }]),
+      new Poly({ x: Game.width + 99, y: 25, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 99 }}, { delay: 2000, duration: 301, props: { x: 99 - Game.width } }]),
+      new Poly({ x: Game.width + 173, y: 25, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 173 }}, { delay: 2000, duration: 301, props: { x: 173 - Game.width } }]),
+      new Poly({ x: Game.width + 247, y: 25, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 247 }}, { delay: 2000, duration: 301, props: { x: 247 - Game.width } }]),
+      new Poly({ x: Game.width + 25, y: 99, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 25 }}, { delay: 2000, duration: 301, props: { x: 25 - Game.width } }]),
+      new Poly({ x: Game.width + 99, y: 99, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 99 }}, { delay: 2000, duration: 301, props: { x: 99 - Game.width } }]),
+      new Poly({ x: Game.width + 173, y: 99, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 173 }}, { delay: 2000, duration: 301, props: { x: 173 - Game.width } }]),
+      new Poly({ x: Game.width + 247, y: 99, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 247 }}, { delay: 2000, duration: 301, props: { x: 247 - Game.width } }]),
+      new Poly({ x: Game.width + 25, y: 173, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 25 }}, { delay: 2000, duration: 301, props: { x: 25 - Game.width } }]),
+      new Poly({ x: Game.width + 99, y: 173, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 99 }}, { delay: 2000, duration: 301, props: { x: 99 - Game.width } }]),
+      new Poly({ x: Game.width + 173, y: 173, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 173 }}, { delay: 2000, duration: 301, props: { x: 173 - Game.width } }]),
+      new Poly({ x: Game.width + 247, y: 173, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 247 }}, { delay: 2000, duration: 301, props: { x: 247 - Game.width } }]),
+      new Poly({ x: Game.width + 25, y: 247, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 25 }}, { delay: 2000, duration: 301, props: { x: 25 - Game.width } }]),
+      new Poly({ x: Game.width + 99, y: 247, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 99 }}, { delay: 2000, duration: 301, props: { x: 99 - Game.width } }]),
+      new Poly({ x: Game.width + 173, y: 247, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 173 }}, { delay: 2000, duration: 301, props: { x: 173 - Game.width } }]),
+      new Poly({ x: Game.width + 247, y: 247, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 247 }}, { delay: 2000, duration: 301, props: { x: 247 - Game.width } }]),
+      new Poly({ x: Game.width + 25, y: 321, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 25 }}, { delay: 2000, duration: 301, props: { x: 25 - Game.width } }]),
+      new Poly({ x: Game.width + 99, y: 321, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 99 }}, { delay: 2000, duration: 301, props: { x: 99 - Game.width } }]),
+      new Poly({ x: Game.width + 173, y: 321, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 173 }}, { delay: 2000, duration: 301, props: { x: 173 - Game.width } }]),
+      new Poly({ x: Game.width + 247, y: 321, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 247 }}, { delay: 2000, duration: 301, props: { x: 247 - Game.width } }]),
 
-      [new Rect(0, 394, Game.width, 86, 0), [2000, 4000, 'a', 0.009]],
-      [new Rect(0, 0, 0, 0, 0), [9000, null, 'end']]
+      // Screen 3
+      new Poly({ x: Game.width * 2 + 25, y: 25, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 25 + Game.width }}, { delay: 2000, duration: 301, props: { x: 25 } }]),
+      new Poly({ x: Game.width * 2 + 99, y: 25, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 99 + Game.width }}, { delay: 2000, duration: 301, props: { x: 99 } }]),
+      new Poly({ x: Game.width * 2 + 173, y: 25, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 173 + Game.width }}, { delay: 2000, duration: 301, props: { x: 173 } }]),
+      new Poly({ x: Game.width * 2 + 247, y: 25, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 247 + Game.width }}, { delay: 2000, duration: 301, props: { x: 247 } }]),
+      new Poly({ x: Game.width * 2 + 25, y: 99, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 25 + Game.width }}, { delay: 2000, duration: 301, props: { x: 25 } }]),
+      new Poly({ x: Game.width * 2 + 99, y: 99, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 99 + Game.width }}, { delay: 2000, duration: 301, props: { x: 99 } }]),
+      new Poly({ x: Game.width * 2 + 173, y: 99, w: 48, h: 48 }, [{ delay: 4000, duration: 300, props: { x: 173 + Game.width }}, { delay: 2000, duration: 301, props: { x: 173 } }]),
+
+      new Poly({ x: 0, y: Game.height - 86, w: Game.width, h: 86 }, [])
     ]
   }
 
   draw() {
     Game.shapes = this.shapes
 
-    Game.shapes.forEach((s, i) => {
-      s[0].draw('255, 255, 255')
+    Game.shapes.forEach((shape) => {
+      shape.update()
+      shape.draw()
 
-      if (s[0].alpha > 0.75) {
-        Game.hits[i] = collideRectCircle(
-          s[0].pos.x, s[0].pos.y, s[0].w, s[0].h,
-          Game.bug.pos.x, Game.bug.pos.y, Game.bug.radius
-        )
-      }
-    })
-
-    this.update()
-  }
-
-  update() {
-    Game.shapes.forEach((s) => {
-      for (let i = 1; i < s.length; i++) {
-        const start_time = s[i][0]
-        const end_time = s[i][1]
-        const prop = s[i][2]
-
-        if (ellapsed(start_time, end_time)) {
-          switch (prop) {
-            case 'a':
-              s[0].updateAlpha(s[i][3])
-              break
-            case 'wh':
-              s[0].updateDimensions(s[i][3], s[i][4])
-              break
-            case 'xy':
-              s[0].updateCoordinates(s[i][3], s[i][4])
-              break
-            case 'end':
-              endScene()
-              break
-          }
-        }
-      }
+      // if (s[0].alpha > 0.75) {
+      //   Game.hits[i] = collideRectCircle(
+      //     s[0].pos.x, s[0].pos.y, s[0].w, s[0].h,
+      //     Game.bug.pos.x, Game.bug.pos.y, Game.bug.radius
+      //   )
+      // }
     })
   }
 }
