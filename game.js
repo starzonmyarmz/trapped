@@ -122,9 +122,10 @@ function draw() {
 
   // …then the game is over
   if (Game.over) {
-    Game.shapes.forEach((s) => {
-      s[0].vel.add(s[0].acc)
-      s[0].pos.add(s[0].vel)
+    Game.shapes.forEach((shape) => {
+      shape.velocity += shape.acceleration
+      shape.x += shape.velocity
+      shape.y += shape.velocity
     })
   }
 
