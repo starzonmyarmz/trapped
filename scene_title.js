@@ -4,6 +4,8 @@ class Title {
   }
 
   draw() {
+    background(0)
+
     fill(255)
     textSize(32)
     textAlign(CENTER, TOP)

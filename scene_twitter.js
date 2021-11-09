@@ -1,8 +1,8 @@
 class Twitter {
   constructor() {
     this.shapes = [
-      new Rect(48, 48, 64, 64, 0),
-      new Rect(202, 48, 64, 64, 0)
+      // new Rect(48, 48, 64, 64, 0),
+      // new Rect(202, 48, 64, 64, 0)
     ]
   }
 

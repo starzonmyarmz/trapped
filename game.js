@@ -15,7 +15,7 @@ let Game = {
   debug: params.get('debug') ? true : false
 }
 
-let img, hammer
+let hammer, sound
 
 let ellapsed = (min, max) => {
   const el = millis() - Game.timestamp
@@ -44,7 +44,9 @@ const requestAccess = () => {
 }
 
 function preload() {
-  img = loadImage('./fly.png')
+  soundFormats('mp3', 'ogg');
+
+  sound = loadSound('./sound/theme')
 }
 
 function setup() {
@@ -94,8 +96,6 @@ function setup() {
 
 function draw() {
   if (!Game.permission) return
-
-  background(0)
 
   // Handle Device rotation inputs
   if (Game.input === 'touch') {
@@ -151,4 +151,8 @@ function swiped(event) {
   if (event.direction == 4) {
     if (Game.title_active) endScene()
   }
+}
+
+function doubleClicked() {
+  if (Game.input === 'mouse') endScene()
 }
