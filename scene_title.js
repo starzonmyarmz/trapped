@@ -4,9 +4,9 @@ class Title {
   }
 
   draw() {
-    background(0)
+    background(255)
 
-    fill(255)
+    fill(0)
     textSize(32)
     textAlign(CENTER, TOP)
     text('trapped', Game.width / 2, 0)

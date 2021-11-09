@@ -6,13 +6,13 @@ class Poly {
     this.h = options.h
 
     this.shape = options.shape || 'rect'
-    this.color = options.color || 255
+    this.color = options.color || 0
     this.alpha = options.alpha || 255
 
     this.velocity = 0
     this.acceleration = random(-1, 1)
 
-    this.q = q
+    this.q = q || null
     this.current = null
   }
 

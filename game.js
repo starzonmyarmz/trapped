@@ -143,6 +143,10 @@ function draw() {
   }
 }
 
+function mouseClicked() {
+  Game.scenes.handleEvent("mouseClicked")
+}
+
 function swiped(event) {
   if (event.direction == 2) {
 

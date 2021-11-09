@@ -8,7 +8,9 @@ class Bug {
   }
 
   draw() {
-    fill('hotpink')
+    if (this.hidden) return
+
+    fill(7)
     noStroke()
     ellipseMode(CENTER)
     ellipse(this.pos.x, this.pos.y, this.radius)
