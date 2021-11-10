@@ -16,12 +16,7 @@ let Game = {
   debug: params.get('debug') ? true : false
 }
 
-let hammer, sound, r_black, r_regular
-
-let ellapsed = (min, max) => {
-  const el = millis() - Game.timestamp
-  return el > min && el < (max || 999999)
-}
+let sound, r_black, r_regular
 
 let endScene = () => {
   Game.hits = []
@@ -83,13 +78,6 @@ function setup() {
   Game.scenes.addScene(Home)
   Game.scenes.addScene(Text)
   Game.scenes.addScene(Twitter)
-
-  // Set up touch events with hammer.js
-  hammer = new Hammer(document.body, { preventDefault: true })
-  hammer.get('swipe').set({
-    direction: Hammer.DIRECTION_ALL
-  })
-  hammer.on('swipe', swiped)
 
   // Start this party
   createCanvas(Game.width, Game.height)
@@ -162,16 +150,6 @@ function touchMoved() {
 
 function touchEnded() {
   Game.scenes.handleEvent("touchEnded")
-}
-
-function swiped(event) {
-  if (event.direction == 2) {
-
-  }
-
-  if (event.direction == 4) {
-    if (Game.title_active) endScene()
-  }
 }
 
 function doubleClicked() {
