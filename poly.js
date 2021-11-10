@@ -24,6 +24,7 @@ class Poly {
 
     switch (this.shape) {
       case 'rect' :
+        rectMode(CORNER)
         rect(this.x, this.y, this.w, this.h)
         break
       case 'ellipse' :

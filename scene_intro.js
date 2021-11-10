@@ -12,7 +12,7 @@ class Intro {
     text('Tap to begin', Game.width / 2, Game.height / 2)
   }
 
-  mouseClicked() {
+  touchEnded() {
     // if (millis() - this.start > 1000) {
       sound.loop()
       endScene()

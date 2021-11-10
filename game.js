@@ -11,11 +11,12 @@ let Game = {
   shapes: [],
   bug: null,
   over: false,
+  sound: false,
   title_active: false,
   debug: params.get('debug') ? true : false
 }
 
-let hammer, sound
+let hammer, sound, r_black, r_regular
 
 let ellapsed = (min, max) => {
   const el = millis() - Game.timestamp
@@ -46,7 +47,9 @@ const requestAccess = () => {
 function preload() {
   soundFormats('mp3', 'ogg');
 
-  sound = loadSound('./sound/theme')
+  r_black = loadFont('./assets/Roboto-Black.ttf')
+  r_regular = loadFont('./assets/Roboto-Regular.ttf')
+  sound = loadSound('./assets/theme')
 }
 
 function setup() {
@@ -97,6 +100,12 @@ function setup() {
 function draw() {
   if (!Game.permission) return
 
+  if (!Game.sound) {
+    sound.setVolume(0)
+  } else {
+    sound.setVolume(0.77)
+  }
+
   // Handle Device rotation inputs
   if (Game.input === 'touch') {
     rX = (rotationY * 7.5) + (width / 2)
@@ -143,8 +152,16 @@ function draw() {
   }
 }
 
-function mouseClicked() {
-  Game.scenes.handleEvent("mouseClicked")
+function touchStarted() {
+  Game.scenes.handleEvent("touchStarted")
+}
+
+function touchMoved() {
+  Game.scenes.handleEvent("touchMoved")
+}
+
+function touchEnded() {
+  Game.scenes.handleEvent("touchEnded")
 }
 
 function swiped(event) {
