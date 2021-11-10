@@ -4,6 +4,7 @@ class Title {
     this.current_x = Game.width / 2 - 76
     this.rewind = false
     this.fadeOut = false
+    this.touching = false
     this.color = 0
   }
 
@@ -25,7 +26,7 @@ class Title {
     text('Daniel Marino, Game Off 2021', Game.width / 2, Game.height / 3 + 64)
 
     textAlign(CENTER, BOTTOM)
-    text('Swipe to unlock', Game.width / 2, Game.height - 16)
+    text('Swipe to play', Game.width / 2, Game.height - 16)
 
     rectMode(CENTER)
     rect(Game.width / 2, Game.height - 64, 200, 48)
@@ -52,8 +53,15 @@ class Title {
     Game.title_active = true
   }
 
+  touchStarted() {
+    if (mouseY > Game.height - 84) {
+      this.touching = true
+    }
+  }
+
   touchMoved() {
     if (this.fadeOut) return
+    if (!this.touching) return
     this.current_x = constrain(mouseX, this.start_x, this.start_x + 152)
     if (this.current_x >= this.start_x + 152) {
       this.fadeOut = true
@@ -61,6 +69,7 @@ class Title {
   }
 
   touchEnded() {
+    this.touching = false
     if (this.current_x < this.start_x + 152) {
       this.rewind = true
     }
