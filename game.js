@@ -9,9 +9,9 @@ let Game = {
   timestamp: 0,
   hits: [],
   shapes: [],
+  sound: localStorage.getItem('trapped_game_sound') === 'true' ? true : false,
   bug: null,
   over: false,
-  sound: false,
   title_active: false,
   debug: params.get('debug') ? true : false
 }
@@ -88,10 +88,10 @@ function setup() {
 function draw() {
   if (!Game.permission) return
 
-  if (!Game.sound) {
-    sound.setVolume(0)
+  if (Game.sound) {
+    sound.setVolume(0.5)
   } else {
-    sound.setVolume(0.77)
+    sound.setVolume(0)
   }
 
   // Handle Device rotation inputs

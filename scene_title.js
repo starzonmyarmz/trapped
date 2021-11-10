@@ -54,6 +54,10 @@ class Title {
   }
 
   touchStarted() {
+    if (mouseX < 134 && mouseY < 72) {
+      document.getElementById('settings').hidden = false
+    }
+    
     if (mouseY > Game.height - 84) {
       this.touching = true
     }
