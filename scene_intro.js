@@ -13,6 +13,7 @@ class Intro {
   }
 
   touchEnded() {
+    if (!Game.permission) return
     // if (millis() - this.start > 1000) {
       sound.loop()
       endScene()

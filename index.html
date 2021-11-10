@@ -19,6 +19,7 @@
         background: #000;
         color: #fff;
         margin: 0;
+        overflow: hidden;
       }
 
       main {
@@ -35,15 +36,6 @@
         max-height: 100%;
         object-fit: contain;
         width: revert !important;
-      }
-
-      button {
-        background: #000;
-        border: 0;
-        color: #fff;
-        font-size: 20px;
-        padding: 20px 0;
-        position: relative;
       }
 
       .debug canvas {
@@ -65,7 +57,16 @@
         flex-direction: column;
         gap: 20px;
         justify-content: center;
-        padding: 0 25vw;
+        padding: 0 15vw;
+      }
+
+      #settings button {
+        background: #000;
+        border: 0;
+        color: #fff;
+        font-size: 20px;
+        padding: 20px 0;
+        position: relative;
       }
 
       [data-sound]:before {
@@ -133,16 +134,14 @@
     <div id="orientation" class="alert">
       This game runs needs to run in portrait mode
     </div>
-
     <div id="permission" class="alert" hidden>
       This game needs permission to use your phones sensors
-      <button id="request">Request permissions</button>
+      <button type="button" id="request">Request permissions</button>
     </div>
-
     <div id="settings" class="alert" hidden>
-      <button data-back>Back</button>
-      <button data-sound>Toggle Sound</button>
-      <button data-share hidden>Share</button>
+      <button type="button" data-back>Back</button>
+      <button type="button" data-sound>Toggle Sound</button>
+      <button type="button" data-share hidden>Share</button>
     </div>
   </body>
 </html>

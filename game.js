@@ -57,7 +57,7 @@ function setup() {
   // Check for DeviceMotionEvent and Permissions
   if (typeof(DeviceMotionEvent) !== 'undefined' && typeof(DeviceMotionEvent.requestPermission) === 'function' ) {
     DeviceMotionEvent.requestPermission()
-      .catch(() => {
+      .catch((error) => {
         document.getElementById('permission').hidden = false
         let button = document.getElementById('request')
         button.addEventListener('click', requestAccess)
@@ -140,18 +140,16 @@ function draw() {
   }
 }
 
-function touchStarted(event) {
-  event.preventDefault()
-  Game.scenes.handleEvent("touchStarted")
+function touchStarted() {
+  Game.scenes.handleEvent('touchStarted')
 }
 
-function touchMoved(event) {
-  event.preventDefault()
-  Game.scenes.handleEvent("touchMoved")
+function touchMoved() {
+  Game.scenes.handleEvent('touchMoved')
 }
 
 function touchEnded() {
-  Game.scenes.handleEvent("touchEnded")
+  Game.scenes.handleEvent('touchEnded')
 }
 
 function doubleClicked() {
