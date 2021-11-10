@@ -140,11 +140,13 @@ function draw() {
   }
 }
 
-function touchStarted() {
+function touchStarted(event) {
+  event.preventDefault()
   Game.scenes.handleEvent("touchStarted")
 }
 
-function touchMoved() {
+function touchMoved(event) {
+  event.preventDefault()
   Game.scenes.handleEvent("touchMoved")
 }
 
