@@ -71,7 +71,7 @@ function setup() {
     Game.permission = true
   }
 
-  // Add scenes to p5.scenemanager
+  // Add scenes to p5.sceneManager
   Game.scenes = new SceneManager()
   Game.scenes.addScene(Intro)
   Game.scenes.addScene(Title)
@@ -96,8 +96,8 @@ function draw() {
 
   // Handle Device rotation inputs
   if (Game.input === 'touch') {
-    rX = (rotationY * 7.5) + (width / 2)
-    rY = (rotationX * 15) + (height / 2)
+    rX = (rotationY * 7.5 * -1) + (width / 2)
+    rY = (rotationX * 15 * -1) + (height / 2)
     Game.bug.update(
       constrain(rX, 0, Game.width),
       constrain(rY, 0, Game.height)
