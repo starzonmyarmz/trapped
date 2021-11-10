@@ -21,12 +21,19 @@
       }
 
       main {
-        display: grid;
+        display: flex;
         place-items: center;
       }
 
       canvas {
+        aspect-ratio: 320 / 480;
         display: block;
+        height: revert !important;
+        margin: 0 auto;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        width: revert !important;
       }
 
       .debug canvas {
