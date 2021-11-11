@@ -10,7 +10,7 @@ class Title {
     textSize(48)
     textAlign(CENTER, TOP)
     textFont(r_black)
-    text('Trapped', Game.width / 2, Game.height / 3)
+    text('Trapped', Game.width / 2, Game.height / 4)
 
     textSize(12)
     textAlign(LEFT, TOP)
@@ -18,7 +18,7 @@ class Title {
     text('Settings', 12, 12)
 
     textAlign(CENTER, TOP)
-    text('Daniel Marino, Game Off 2021', Game.width / 2, Game.height / 3 + 64)
+    text('Daniel Marino, Game Off 2021', Game.width / 2, Game.height / 4 + 64)
 
     textAlign(CENTER, BOTTOM)
     text('Swipe to play', Game.width / 2, Game.height - 16)
@@ -45,6 +45,9 @@ class Title {
     }
 
     Game.bug.hidden = false
+
+    this.transition.update()
+    this.transition.draw()
   }
 
   touchStarted() {
@@ -80,5 +83,12 @@ class Title {
     this.fadeOut = false
     this.touching = false
     this.color = 0
+
+    this.transition = new Poly(
+      { x: 0, y: 0, w: Game.width, h: Game.height, color: 255 },
+      [
+        { delay: 2000, duration: 2000, props: { alpha: 0 }}
+      ]
+    )
   }
 }

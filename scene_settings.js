@@ -11,6 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('[data-sound]').classList.toggle('active', Game.sound)
   })
 
+  document.querySelector('[data-intro]').addEventListener('click', () => {
+    Game.skip_intro = false
+    localStorage.setItem('trapped_game_intro', Game.skip_intro)
+  })
+
   if (navigator.canShare) {
     document.querySelector('[data-share]').hidden = false
     document.querySelector('[data-share]').addEventListener('click', async () => {

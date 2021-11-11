@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1,maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <style>
+      * {
+        box-sizing: border-box;
+        cursor: none;
+      }
+
+      html, body, main {
+        height: 100%;
+      }
+
+      body {
+        background: #000;
+        margin: 0;
+      }
+
+      main {
+        display: grid;
+        place-items: center;
+      }
+
+      canvas {
+        border: 1px solid hotpink;
+        padding: 5px;
+        display: block;
+      }
+    </style>
+
+    <script src="../lib/p5.min.js"></script>
+
+    <script>
+      let img, mouse, bug, mid
+
+      function preload() {
+        img = loadImage('./fly.gif')
+      }
+
+      function setup() {
+        createCanvas(360, 480)
+        bug = new Bug()
+      }
+
+      function draw() {
+        background('black')
+        bug.update(mouseX, mouseY)
+        bug.draw()
+      }
+
+      function mouseClicked() {
+        bug.stopping = true
+      }
+
+      class Bug {
+        constructor() {
+          this.pos = createVector(width / 2, height / 2)
+          this.vel = createVector(0, 0)
+          this.acc = createVector(0, 0)
+          this.stopping = false
+        }
+
+        draw() {
+          push()
+          translate(this.pos.x, this.pos.y)
+          this.ang = this.vel.heading()
+          angleMode(DEGREES)
+          rotate(this.ang + 90)
+          image(img, 0, 0, 32, 32)
+          pop()
+        }
+
+        update(x, y) {
+          mouse = createVector(mouseX, mouseY)
+          mouse.sub(this.pos)
+          mouse.setMag(0.8)
+          this.acc = mouse
+          this.vel.add(this.acc)
+          this.pos.add(this.vel)
+          this.vel.limit(3)
+        }
+      }
+    </script>
+
+  </head>
+  <body>
+  </body>
+</html>

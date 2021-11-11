@@ -130,6 +130,13 @@
         top: 0;
       }
 
+      .reload {
+        color: #000;
+        font-size: 14px;
+        margin-top: -12px;
+        text-align: center;
+      }
+
       [hidden] {
         display: none !important;
       }
@@ -160,8 +167,10 @@
     </div>
     <div id="settings" class="alert" hidden>
       <button type="button" data-back>Back</button>
-      <button type="button" data-sound>Toggle Sound</button>
       <button type="button" data-share hidden>Share</button>
+      <button type="button" data-sound>Toggle Sound</button>
+      <button type="button" data-intro>Rewatch Intro</button>
+      <div class="reload">Requires a browser refresh</div>
     </div>
   </body>
 </html>

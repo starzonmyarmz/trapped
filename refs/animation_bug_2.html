@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1,maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <style>
+      * {
+        box-sizing: border-box;
+        cursor: none;
+      }
+
+      html, body, main {
+        height: 100%;
+      }
+
+      body {
+        background: #000;
+        margin: 0;
+      }
+
+      main {
+        display: grid;
+        place-items: center;
+      }
+
+      canvas {
+        border: 1px solid hotpink;
+        padding: 5px;
+        display: block;
+      }
+    </style>
+
+    <script src="../lib/p5.min.js"></script>
+
+    <script>
+      let img, mouse, bug, middle, timer
+      let bg = 0
+
+      function preload() {
+        img = loadImage('./fly.gif')
+      }
+
+      function setup() {
+        createCanvas(360, 480)
+        bug = new Bug()
+      }
+
+      function draw() {
+        background(bg)
+        bug.update(mouseX, mouseY)
+        bug.draw()
+
+        if (timer && millis() - timer > 1000) {
+          bug.scale()
+        }
+
+        if (timer && millis() - timer > 1500) {
+          bug.circ = true
+        }
+      }
+
+      function mouseClicked() {
+        img.pause()
+      }
+
+      function doubleClicked() {
+        timer = millis()
+        bg = 255
+        document.querySelector('body').style.background = '#fff'
+      }
+
+      class Bug {
+        constructor() {
+          this.pos_y = height + 64
+          this.vel_y = 5
+          this.acc_y = .045
+          this.scl = 1
+          this.alph = 255
+          this.circ = false
+        }
+
+        draw() {
+          ellipseMode(CENTER)
+          noTint()
+          noStroke()
+          fill(0)
+          circle(width / 2, this.pos_y, 8)
+
+          push()
+          translate(width / 2, this.pos_y)
+          scale(this.scl)
+          tint(255, this.alph)
+          image(img, -16, -16, 32, 32)
+          pop()
+        }
+
+        update(x, y) {
+          if (this.vel_y > 0) {
+            this.vel_y -= this.acc_y
+            this.pos_y -= this.vel_y
+          }
+        }
+
+        scale() {
+          if (this.scl < 0.5) return
+          this.scl -= 0.01
+          this.alph -= 5
+        }
+
+        circ() {
+          if (this.scl < 0.5) return
+          this.scl -= 0.01
+          this.alph -= 5
+        }
+      }
+    </script>
+
+  </head>
+  <body>
+  </body>
+</html>
