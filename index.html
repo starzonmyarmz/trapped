@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1,maximum-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&text=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&display=swap" rel="stylesheet">
 
     <style>
       * {
@@ -18,6 +21,7 @@
       body {
         background: #000;
         color: #fff;
+        font-family: 'Roboto';
         margin: 0;
         overflow: hidden;
       }
@@ -87,7 +91,24 @@
 
       #permission,
       #orientation {
+        align-items: center;
         background: #000;
+        display: flex;
+        font-size: 20px;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        padding: 0 15vw;
+        text-align: center;
+      }
+
+      #permission button {
+        background: #fff;
+        border: 0;
+        color: #000;
+        font-size: 20px;
+        padding: 20px 0;
+        width: 100%;
       }
 
       #orientation {
@@ -132,10 +153,10 @@
   </head>
   <body>
     <div id="orientation" class="alert">
-      This game runs needs to run in portrait mode
+      This game is designed to run in portrait orientation. Please rotate your device.
     </div>
     <div id="permission" class="alert" hidden>
-      This game needs permission to use your phones sensors
+      This game needs permission to use your phone’s motion sensors.
       <button type="button" id="request">Request permissions</button>
     </div>
     <div id="settings" class="alert" hidden>
