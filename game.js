@@ -76,7 +76,6 @@ function setup() {
   Game.scenes.addScene(Title)
   Game.scenes.addScene(Home)
   Game.scenes.addScene(Text)
-  Game.scenes.addScene(Twitter)
 
   // Start this party
   createCanvas(Game.width, Game.height)
