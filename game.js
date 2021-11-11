@@ -12,7 +12,6 @@ let Game = {
   sound: localStorage.getItem('trapped_game_sound') === 'true' ? true : false,
   bug: null,
   over: false,
-  title_active: false,
   debug: params.get('debug') ? true : false
 }
 
@@ -21,7 +20,6 @@ let sound, r_black, r_regular
 let endScene = () => {
   Game.hits = []
   Game.shapes = []
-  Game.title_active = false
   Game.timestamp = millis()
   Game.scenes.showNextScene()
 }

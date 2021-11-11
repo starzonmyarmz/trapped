@@ -50,7 +50,6 @@ class Title {
     }
 
     Game.bug.hidden = false
-    Game.title_active = true
   }
 
   touchStarted() {
