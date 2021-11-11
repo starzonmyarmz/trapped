@@ -1,11 +1,6 @@
 class Title {
   constructor() {
-    this.start_x = Game.width / 2 - 76
-    this.current_x = Game.width / 2 - 76
-    this.rewind = false
-    this.fadeOut = false
-    this.touching = false
-    this.color = 0
+    this.reset()
   }
 
   draw() {
@@ -76,5 +71,14 @@ class Title {
     if (this.current_x < this.start_x + 152) {
       this.rewind = true
     }
+  }
+
+  reset() {
+    this.start_x = Game.width / 2 - 76
+    this.current_x = Game.width / 2 - 76
+    this.rewind = false
+    this.fadeOut = false
+    this.touching = false
+    this.color = 0
   }
 }

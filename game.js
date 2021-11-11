@@ -21,6 +21,7 @@ let endScene = () => {
   Game.hits = []
   Game.shapes = []
   Game.timestamp = millis()
+  Game.scenes.scene.oScene.reset()
   Game.scenes.showNextScene()
 }
 
@@ -111,17 +112,32 @@ function draw() {
   }
 
   // If there's collision…
-  Game.hits.forEach((h) => {
-    if (h) Game.over = true
+  Game.hits.forEach((hit) => {
+    if (Game.over) return
+
+    if (hit) {
+      Game.timestamp = millis()
+      Game.over = true
+    }
   })
 
   // …then the game is over
   if (Game.over) {
     Game.shapes.forEach((shape) => {
+      shape.q = []
       shape.velocity += shape.acceleration
       shape.x += shape.velocity
       shape.y += shape.velocity
     })
+
+    if (millis() - Game.timestamp > 2000) {
+      Game.hits = []
+      Game.shapes = []
+      Game.over = false
+      Game.timestamp = millis()
+      Game.scenes.scene.oScene.reset()
+      Game.scenes.showScene(Title)
+    }
   }
 
   // Draw all the things

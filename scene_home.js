@@ -1,5 +1,27 @@
 class Home {
   constructor() {
+    this.reset()
+  }
+
+  draw() {
+    background(255)
+
+    Game.shapes = this.shapes
+
+    Game.shapes.forEach((shape, i) => {
+      shape.update()
+      shape.draw()
+
+      if (shape.alpha > 200) {
+        Game.hits[i] = collideRectCircle(
+          shape.x, shape.y, shape.w, shape.h,
+          Game.bug.pos.x, Game.bug.pos.y, Game.bug.radius
+        )
+      }
+    })
+  }
+
+  reset() {
     const fadeIn = { delay: 2000, duration: 1000, props: { alpha: 255 }}
     const fadeOut = { delay: 2000, duration: 1000, props: { alpha: 255 }}
 
@@ -50,23 +72,5 @@ class Home {
 
       new Poly({ x: 0, y: Game.height - 86, w: Game.width, h: 86, alpha: 0.01 }, [fadeIn])
     ]
-  }
-
-  draw() {
-    background(255)
-
-    Game.shapes = this.shapes
-
-    Game.shapes.forEach((shape, i) => {
-      shape.update()
-      shape.draw()
-
-      if (shape.alpha > 200) {
-        Game.hits[i] = collideRectCircle(
-          shape.x, shape.y, shape.w, shape.h,
-          Game.bug.pos.x, Game.bug.pos.y, Game.bug.radius
-        )
-      }
-    })
   }
 }

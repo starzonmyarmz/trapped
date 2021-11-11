@@ -1,6 +1,6 @@
 class Intro {
   constructor() {
-    this.start = millis()
+    this.reset()
   }
 
   draw() {
@@ -18,5 +18,9 @@ class Intro {
       sound.loop()
       endScene()
     // }
+  }
+
+  reset() {
+    this.start = millis()    
   }
 }

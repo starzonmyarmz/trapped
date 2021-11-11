@@ -1,5 +1,27 @@
 class Text {
   constructor() {
+    this.reset()
+  }
+
+  draw() {
+    background(255)
+
+    Game.shapes = this.shapes
+
+    Game.shapes.forEach((shape, i) => {
+      shape.update()
+      shape.draw()
+
+      if (shape.alpha > 200) {
+        Game.hits[i] = collideRectCircle(
+          shape.x, shape.y, shape.w, shape.h,
+          Game.bug.pos.x, Game.bug.pos.y, Game.bug.radius
+        )
+      }
+    })
+  }
+
+  reset() {
     const color = '#1a73e8'
     const fadeIn = { delay: 2000, duration: 1000, props: { alpha: 255 }}
     const fadeOut = { delay: 2000, duration: 1000, props: { alpha: 255 }}
@@ -30,23 +52,5 @@ class Text {
 
       new Poly({ x: 0, y: Game.height - 64, w: Game.width, h: 64, color: color, alpha: 0.01 }, [fadeIn]),
     ]
-  }
-
-  draw() {
-    background(255)
-
-    Game.shapes = this.shapes
-
-    Game.shapes.forEach((shape, i) => {
-      shape.update()
-      shape.draw()
-
-      if (shape.alpha > 200) {
-        Game.hits[i] = collideRectCircle(
-          shape.x, shape.y, shape.w, shape.h,
-          Game.bug.pos.x, Game.bug.pos.y, Game.bug.radius
-        )
-      }
-    })
   }
 }
