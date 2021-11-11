@@ -162,6 +162,10 @@ function draw() {
   }
 }
 
+function mouseClicked() {
+  Game.scenes.handleEvent('mouseClicked')
+}
+
 function touchStarted() {
   Game.scenes.handleEvent('touchStarted')
 }

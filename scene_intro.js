@@ -29,11 +29,11 @@ class Intro {
     }
   }
 
-  touchEnded() {
+  mouseClicked() {
     if (!Game.permission) return
 
     sound.loop()
-    
+
     this.start = true
     Game.timestamp = millis()
 

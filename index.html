@@ -5,11 +5,23 @@
     <meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1,maximum-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&text=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&display=swap" rel="stylesheet">
-
     <style>
+      @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-display: block;
+        src: url(https://fonts.gstatic.com/l/font?kit=KFOmCnqEu92Fr1Me4GZNCzcPHoCw1swLPTz8SBNUL3mWFbZdfBrH_VmJzgV8vg1Vtx4Riq-pL5uGLk5UQLr2pONo5Hf-dQk&skey=a0a0114a1dcab3ac&v=v29) format('woff2');
+      }
+
+      @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 900;
+        font-display: block;
+        src: url(https://fonts.gstatic.com/l/font?kit=KFOlCnqEu92Fr1MmYUtvBh0_IsHAockMOD_xRx5XKn6TFqtCYRnC-lyKwwpxhzZsshkUiaKmIpiDKUtXXaXrp-Zv4XTzegTq1wQ&skey=934406f772f9777d&v=v29) format('woff2');
+      }
+
       * {
         box-sizing: border-box;
       }
@@ -140,6 +152,11 @@
       [hidden] {
         display: none !important;
       }
+
+      #p5_loading {
+        display: grid;
+        place-items: center;
+      }
     </style>
 
     <script src="lib/p5.min.js"></script>
@@ -158,6 +175,9 @@
     <script src="game.js"></script>
   </head>
   <body>
+    <div id="p5_loading" class="alert">
+      Loading…
+    </div>
     <div id="orientation" class="alert">
       This game is designed to run in portrait orientation. Please rotate your device.
     </div>
