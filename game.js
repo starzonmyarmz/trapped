@@ -12,6 +12,7 @@ let Game = {
   sound: localStorage.getItem('trapped_game_sound') === 'true' ? true : false,
   bug: null,
   over: false,
+  godmode: params.get('godmode') ? true : false,
   debug: params.get('debug') ? true : false
 }
 
@@ -111,14 +112,16 @@ function draw() {
   }
 
   // If there's collision…
-  Game.hits.forEach((hit) => {
-    if (Game.over) return
+  if (!Game.godmode) {
+    Game.hits.forEach((hit) => {
+      if (Game.over) return
 
-    if (hit) {
-      Game.timestamp = millis()
-      Game.over = true
-    }
-  })
+      if (hit) {
+        Game.timestamp = millis()
+        Game.over = true
+      }
+    })
+  }
 
   // …then the game is over
   if (Game.over) {
