@@ -10,15 +10,12 @@ class Title {
     textSize(48)
     textAlign(CENTER, TOP)
     textFont(r_black)
-    text('Trapped', Game.width / 2, Game.height / 4)
+    text('Trapped', Game.width / 2, Game.height / 4 - 16)
 
     textSize(12)
     textAlign(LEFT, TOP)
     textFont(r_regular)
     text('Settings', 12, 12)
-
-    textAlign(CENTER, TOP)
-    text('Daniel Marino, Game Off 2021', Game.width / 2, Game.height / 4 + 64)
 
     textAlign(CENTER, BOTTOM)
     text('Swipe to play', Game.width / 2, Game.height - 16)
