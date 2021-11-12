@@ -1,5 +1,9 @@
 const params = new URLSearchParams(window.location.search)
 
+if (localStorage.getItem('trapped_game_sound') == null) {
+  localStorage.setItem('trapped_game_sound', true)
+}
+
 let Game = {
   width: 320,
   height: 480,
