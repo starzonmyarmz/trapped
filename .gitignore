@@ -1,2 +1,4 @@
-/refs/Backup
-/refs/Samples
+/dist
+/node_modules
+/refs/music/Backup
+/refs/music/Samples

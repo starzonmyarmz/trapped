@@ -41,7 +41,7 @@ const requestAccess = () => {
 }
 
 function preload() {
-  soundFormats('mp3', 'ogg');
+  soundFormats('ogg', 'mp3')
 
   r_black = loadFont('./assets/Roboto-Black.ttf')
   r_regular = loadFont('./assets/Roboto-Regular.ttf')

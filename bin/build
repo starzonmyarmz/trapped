@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -e
+
+mkdir -p dist
+mkdir -p dist/src
+
+cp -r assets/ dist/assets/
+cp -r lib/ dist/lib/
+
+minify styles.css > dist/styles.css
+minify index.html > dist/index.html
+
+# p5.scenemanager doesn't have a min version
+minify lib/p5.scenemanager.js > dist/lib/p5.scenemanager.js
+
+for file in src/*; do
+  minify $file > dist/$file
+done
