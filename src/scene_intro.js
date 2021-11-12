@@ -12,7 +12,7 @@ class Intro {
       textAlign(CENTER, CENTER)
       text('Tap to begin', Game.width / 2, Game.height / 2)
     } else {
-      if (this.start) {
+      if (this.started) {
         image(intro_vid, -1, -1, Game.width + 3, Game.height + 3)
 
         if (millis() - Game.timestamp > 16000) {
@@ -31,10 +31,11 @@ class Intro {
 
   mouseClicked() {
     if (!Game.permission) return
+    if (this.started) return
 
     sound.loop()
 
-    this.start = true
+    this.started = true
     Game.timestamp = millis()
 
     if (Game.skip_intro) {
@@ -43,6 +44,6 @@ class Intro {
   }
 
   reset() {
-    this.start = false
+    this.started = false
   }
 }
