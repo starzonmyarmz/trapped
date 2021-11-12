@@ -137,9 +137,10 @@ function draw() {
   if (Game.over) {
     Game.shapes.forEach((shape) => {
       shape.q = []
-      shape.velocity += shape.acceleration
-      shape.x += shape.velocity
-      shape.y += shape.velocity
+      shape.velocity_x += shape.acceleration_x
+      shape.velocity_y += shape.acceleration_y
+      shape.x += shape.velocity_x
+      shape.y += shape.velocity_y
     })
 
     if (millis() - Game.timestamp > 2000) {

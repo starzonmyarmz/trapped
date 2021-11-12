@@ -9,8 +9,10 @@ class Poly {
     this.color = options.color || 0
     this.alpha = options.alpha || 255
 
-    this.velocity = 0
-    this.acceleration = random(-1, 1)
+    this.velocity_x = 0
+    this.velocity_y = 0
+    this.acceleration_x = random(-1, 1)
+    this.acceleration_y = random(-1, 1)
 
     this.q = q || null
     this.current = null
