@@ -35,6 +35,11 @@ class Title {
     }
 
     if (this.fadeOut) {
+      if (Game.sound && !this.music_fading) {
+        Game.song.setVolume(0, 2)
+        this.music_fading = true
+      }
+
       this.color += 2
       if (this.color >= 255) {
         endScene()
@@ -80,6 +85,7 @@ class Title {
     this.fadeOut = false
     this.touching = false
     this.color = 0
+    this.music_fading = false
 
     this.transition = new Poly(
       { x: 0, y: 0, w: Game.width, h: Game.height, color: 255 },

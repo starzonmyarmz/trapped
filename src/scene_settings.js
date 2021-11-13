@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   document.querySelector('[data-sound]').addEventListener('click', () => {
+    Game.sound ? Game.song.pause() : Game.song.loop()
     Game.sound = !Game.sound
     localStorage.setItem('trapped_game_sound', Game.sound)
     document.querySelector('[data-sound]').classList.toggle('active', Game.sound)

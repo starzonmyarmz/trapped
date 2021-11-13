@@ -3,6 +3,14 @@ class Home {
     this.reset()
   }
 
+  setup() {
+    if (Game.sound) {
+      Game.song = home
+      Game.song.setVolume(1)
+      Game.song.loop()
+    }
+  }
+
   draw() {
     background(255)
 

@@ -3,6 +3,14 @@ class Text {
     this.reset()
   }
 
+  setup() {
+    if (Game.sound) {
+      Game.song = messages
+      Game.song.setVolume(1)
+      Game.song.loop()
+    }
+  }
+
   draw() {
     background(255)
 

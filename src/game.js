@@ -15,6 +15,7 @@ let Game = {
   shapes: [],
   skip_intro: localStorage.getItem('trapped_game_intro') === 'true' ? true : false,
   sound: localStorage.getItem('trapped_game_sound') === 'true' ? true : false,
+  song: null,
   bug: null,
   over: false,
   godmode: params.get('godmode') ? true : false,
@@ -50,7 +51,10 @@ function preload() {
   r_black = loadFont('./assets/Roboto-Black.ttf')
   r_regular = loadFont('./assets/Roboto-Regular.ttf')
 
-  sound = loadSound('./assets/theme')
+  theme = loadSound('./assets/theme')
+  dead = loadSound('./assets/dead')
+  home = loadSound('./assets/home')
+  messages = loadSound('./assets/messages')
 
   if (!Game.skip_intro) {
     intro_vid = loadImage('assets/fly.gif')
@@ -91,17 +95,12 @@ function setup() {
   // Start this party
   createCanvas(Game.width, Game.height)
   Game.bug = new Bug(Game.width / 2, Game.height / 2 + 32)
+  Game.song.playMode('restart')
   Game.scenes.showScene(Intro)
 }
 
 function draw() {
   if (!Game.permission) return
-
-  if (Game.sound) {
-    sound.setVolume(1)
-  } else {
-    sound.setVolume(0)
-  }
 
   // Handle Device rotation inputs
   if (Game.input === 'touch') {
@@ -129,6 +128,10 @@ function draw() {
       if (hit) {
         Game.timestamp = millis()
         Game.over = true
+        Game.song.stop()
+        Game.song = dead
+        Game.song.setVolume(1)
+        Game.song.play()
       }
     })
   }

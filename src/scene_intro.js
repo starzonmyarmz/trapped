@@ -33,7 +33,9 @@ class Intro {
     if (!Game.permission) return
     if (this.started) return
 
-    sound.loop()
+    if (Game.sound) {
+      Game.song.loop()
+    }
 
     this.started = true
     Game.timestamp = millis()
@@ -45,5 +47,6 @@ class Intro {
 
   reset() {
     this.started = false
+    Game.song = theme
   }
 }
