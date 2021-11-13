@@ -53,7 +53,7 @@ function preload() {
   sound = loadSound('./assets/theme')
 
   if (!Game.skip_intro) {
-    intro_vid = loadImage('assets/intro.gif')
+    intro_vid = loadImage('assets/fly.gif')
   }
 }
 
