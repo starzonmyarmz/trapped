@@ -42,6 +42,20 @@ class Poly {
           this.x + this.w, this.y + this.h
         )
         break
+      case 'triangle_left' :
+        triangle(
+          this.x, this.y,
+          this.x, this.y + this.h,
+          this.x + this.w, this.y + this.h
+        )
+        break
+      case 'triangle_right' :
+        triangle(
+          this.x + this.w, this.y,
+          this.x + this.w, this.y + this.h,
+          this.x, this.y + this.h
+        )
+        break
     }
   }
 
