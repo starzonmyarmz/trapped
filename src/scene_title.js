@@ -9,12 +9,12 @@ class Title {
     fill(this.color)
     textSize(48)
     textAlign(CENTER, TOP)
-    textFont(r_black)
+    textFont(roboto_black)
     text('Trapped', Game.width / 2, Game.height / 4 - 16)
 
     textSize(12)
     textAlign(LEFT, TOP)
-    textFont(r_regular)
+    textFont(roboto_regular)
     text('Settings', 12, 12)
 
     textAlign(CENTER, BOTTOM)

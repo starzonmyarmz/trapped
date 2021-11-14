@@ -22,7 +22,7 @@ let Game = {
   debug: params.get('debug') ? true : false
 }
 
-let intro_vid, sound, r_black, r_regular
+let intro_vid, sound, roboto_black, roboto_regular
 
 let endScene = () => {
   Game.hits = []
@@ -46,18 +46,20 @@ const requestAccess = () => {
 }
 
 function preload() {
-  soundFormats('ogg', 'mp3')
+  soundFormats('mp3')
 
-  r_black = loadFont('./assets/Roboto-Black.ttf')
-  r_regular = loadFont('./assets/Roboto-Regular.ttf')
+  // Load fonts
+  roboto_black = loadFont('./assets/Roboto-Black.ttf')
+  roboto_regular = loadFont('./assets/Roboto-Regular.ttf')
 
+  // Load music
   theme = loadSound('./assets/theme')
   dead = loadSound('./assets/dead')
   home = loadSound('./assets/home')
   messages = loadSound('./assets/messages')
 
   if (!Game.skip_intro) {
-    intro_vid = loadImage('assets/fly.gif')
+    intro_vid = loadImage('assets/intro.gif')
   }
 }
 
@@ -91,9 +93,8 @@ function setup() {
   Game.scenes.addScene(Title)
   Game.scenes.addScene(Home)
   Game.scenes.addScene(Insta)
-  Game.scenes.addScene(Maps)
-
   Game.scenes.addScene(Text)
+  Game.scenes.addScene(Maps)
 
   // Start this party
   createCanvas(Game.width, Game.height)
@@ -149,6 +150,7 @@ function draw() {
       shape.y += shape.velocity_y
     })
 
+    // Back to home screen after a short delay
     if (millis() - Game.timestamp > 2000) {
       Game.hits = []
       Game.shapes = []
@@ -187,8 +189,4 @@ function touchMoved() {
 
 function touchEnded() {
   Game.scenes.handleEvent('touchEnded')
-}
-
-function doubleClicked() {
-  if (Game.input === 'mouse') endScene()
 }

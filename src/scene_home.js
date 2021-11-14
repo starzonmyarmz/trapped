@@ -24,12 +24,12 @@ class Home extends Scene {
         this.createCollision(shape, i)
       }
     })
-    
+
     this.transition.update()
     this.transition.draw()
 
     if (this.transition.current == null && !this.transition.q.length) {
-      endScene()
+      this.endScene()
     }
   }
 
