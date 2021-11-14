@@ -89,9 +89,10 @@ function setup() {
   Game.scenes = new SceneManager()
   Game.scenes.addScene(Intro)
   Game.scenes.addScene(Title)
+  Game.scenes.addScene(Home)
   Game.scenes.addScene(Insta)
   Game.scenes.addScene(Maps)
-  Game.scenes.addScene(Home)
+
   Game.scenes.addScene(Text)
 
   // Start this party

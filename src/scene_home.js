@@ -1,5 +1,6 @@
-class Home {
+class Home extends Scene {
   constructor() {
+    super()
     this.reset()
   }
 
@@ -20,13 +21,10 @@ class Home {
       shape.draw()
 
       if (this.transition.x > 1) {
-        Game.hits[i] = collideRectCircle(
-          shape.x, shape.y, shape.w, shape.h,
-          Game.bug.pos.x, Game.bug.pos.y, Game.bug.radius
-        )
+        this.createCollision(shape, i)
       }
     })
-
+    
     this.transition.update()
     this.transition.draw()
 
