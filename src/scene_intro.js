@@ -12,12 +12,10 @@ class Intro extends Scene {
       this.song_started = true
     }
 
-    // if (this.intro_started) {
-      fill(255)
-      textSize(14)
-      textAlign(CENTER, CENTER)
-      text('Tap to begin', Game.width / 2, Game.height / 2)
-    // }
+    fill(255)
+    textSize(14)
+    textAlign(CENTER, CENTER)
+    text('Tap to begin', Game.width / 2, Game.height / 2)
 
     if (!Game.skip_intro && this.intro_started) {
       image(intro_vid, -1, -1, Game.width + 3, Game.height + 3)
