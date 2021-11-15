@@ -28,14 +28,6 @@ let Game = {
 
 let intro_vid, sound, roboto_black, roboto_regular
 
-let endScene = () => {
-  Game.hits = []
-  Game.shapes = []
-  Game.timestamp = millis()
-  Game.scenes.scene.oScene.reset()
-  Game.scenes.showNextScene()
-}
-
 const requestAccess = () => {
   DeviceMotionEvent.requestPermission()
     .then(response => {
@@ -63,7 +55,8 @@ function preload() {
   messages = loadSound('./assets/messages')
 
   if (!Game.skip_intro) {
-    intro_vid = loadImage('assets/intro.gif')
+    intro_vid = createVideo('assets/intro.webm')
+    intro_vid.hide()
   }
 }
 
@@ -103,7 +96,6 @@ function setup() {
   // Start this party
   createCanvas(Game.width, Game.height)
   Game.bug = new Bug(Game.width / 2, Game.height / 2 + 32)
-  Game.song.playMode('restart')
   Game.scenes.showScene(Intro)
 }
 
@@ -136,10 +128,13 @@ function draw() {
       if (hit) {
         Game.timestamp = millis()
         Game.over = true
-        Game.song.stop()
-        Game.song = dead
-        Game.song.setVolume(1)
-        Game.song.play()
+
+        if (Game.sound) {
+          Game.song.stop()
+          Game.song = dead
+          Game.song.setVolume(1)
+          Game.song.play()
+        }
       }
     })
   }
