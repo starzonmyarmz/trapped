@@ -1,5 +1,6 @@
-class Text {
+class Text extends Scene {
   constructor() {
+    super()
     this.reset()
   }
 
@@ -20,10 +21,7 @@ class Text {
       shape.draw()
 
       if (this.transition.alpha < 100) {
-        Game.hits[i] = collideRectCircle(
-          shape.x, shape.y, shape.w, shape.h,
-          Game.bug.pos.x, Game.bug.pos.y, Game.bug.radius
-        )
+        this.createCollision(shape, i)
       }
     })
 
@@ -31,7 +29,7 @@ class Text {
     this.transition.draw()
 
     if (this.transition.current == null && !this.transition.q.length) {
-      endScene()
+      this.endScene()
     }
   }
 

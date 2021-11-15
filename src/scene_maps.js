@@ -12,10 +12,7 @@ class Maps {
       shape.draw()
 
       // if (this.transition.x > 1) {
-        Game.hits[i] = collideRectCircle(
-          shape.x, shape.y, shape.w, shape.h,
-          Game.bug.pos.x, Game.bug.pos.y, Game.bug.radius
-        )
+        // this.createCollision(shape, i)
       // }
     })
 
@@ -23,7 +20,7 @@ class Maps {
     // this.transition.draw()
 
     // if (this.transition.current == null && !this.transition.q.length) {
-    //   endScene()
+    //   this.endScene()
     // }
   }
 
@@ -70,7 +67,6 @@ class Maps {
 
     for (let i = 0; i < layout.length; i++) {
       for (let j = 0; j < layout[i].length; j++) {
-
         if (layout[i][j] === 1) {
           this.shapes.push(new Poly(
             { x: j * sq, y: Game.height - sq - i * sq, w: sq, h: sq, color: 'red' },
@@ -82,7 +78,6 @@ class Maps {
             ]
           ))
         }
-
       }
     }
 
