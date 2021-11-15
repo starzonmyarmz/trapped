@@ -1,30 +1,40 @@
-class Maps {
+class Maps extends Scene {
   constructor() {
+    super()
     this.reset()
   }
 
   draw() {
     background(255)
 
+    if (!this.song_started) {
+      this.startSong(home)
+      this.song_started = true
+    }
+
     Game.shapes = this.shapes
     Game.shapes.forEach((shape, i) => {
       shape.update()
       shape.draw()
 
-      // if (this.transition.x > 1) {
-        // this.createCollision(shape, i)
-      // }
+      if (this.transition.alpha > 200) {
+        this.createCollision(shape, i)
+      }
     })
 
-    // this.transition.update()
-    // this.transition.draw()
+    if (!this.transition.q.length && !this.song_stopped) {
+      this.endSong()
+      this.song_stopped = true
+    }
 
-    // if (this.transition.current == null && !this.transition.q.length) {
-    //   this.endScene()
-    // }
+    if (this.transition.current == null && !this.transition.q.length) {
+      this.endScene()
+    }
   }
 
   reset() {
+    this.song_started = false
+    this.song_stopped = false
     this.shapes = []
 
     const layout = [
@@ -71,21 +81,25 @@ class Maps {
           this.shapes.push(new Poly(
             { x: j * sq, y: Game.height - sq - i * sq, w: sq, h: sq, color: 'red' },
             [
-              { delay: 1000, duration: 10000, props: { y: wh - sq - i * sq }},
-              { delay: 1000, duration: 10000, props: { x: -wh + Game.width + j * sq }},
-              { delay: 1000, duration: 10000, props: { y: Game.height - sq - i * sq }},
-              { delay: 1000, duration: 10000, props: { x: j * sq }},
+              { delay: 2000, duration: 10000, props: { y: wh - sq - i * sq }},
+              { delay: 2000, duration: 10000, props: { x: -wh + Game.width + j * sq }},
+              { delay: 2000, duration: 10000, props: { y: Game.height - sq - i * sq }},
+              { delay: 2000, duration: 10000, props: { x: j * sq }},
+              { delay: 2000, duration: 10000, props: { x: j * sq }},
+              { delay: 2000, duration: 10000, props: { x: j * sq }}
             ]
           ))
         }
       }
     }
 
-    // this.transition = new Poly(
-    //   { x: 0, y: 0, w: Game.width, h: Game.height, alpha: 0.01 },
-    //   [
-    //     { delay: 30000, duration: 0, props: {}}
-    //   ]
-    // )
+    this.transition = new Poly(
+      { x: 0, y: 0, w: Game.width, h: Game.height, alpha: 0.01 },
+      [
+        this.startBuffer(),
+        { delay: 60000, duration: 0, props: {}},
+        this.endBuffer()
+      ]
+    )
   }
 }
