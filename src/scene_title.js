@@ -1,12 +1,18 @@
-class Title {
+class Title extends Scene {
   constructor() {
+    super()
     this.reset()
   }
 
   draw() {
     background(255)
 
-    fill(this.color)
+    if (!this.song_started) {
+      this.startSong(theme)
+      this.song_started = true
+    }
+
+    fill(0)
     textSize(48)
     textAlign(CENTER, TOP)
     textFont(roboto_black)
@@ -24,73 +30,86 @@ class Title {
     rect(Game.width / 2, Game.height - 64, 200, 48)
 
     fill(255)
-    rect(this.current_x, Game.height - 64, 36, 36)
+    rect(this.slider_current_x, Game.height - 64, 36, 36)
 
-    if (this.rewind) {
-      this.current_x -= 4
-      if (this.current_x <= this.start_x) {
-        this.current_x = this.start_x
-        this.rewind = false
-      }
-    }
-
-    if (this.fadeOut) {
-      if (Game.sound && !this.music_fading) {
-        Game.song.setVolume(0, 2)
-        this.music_fading = true
-      }
-
-      this.color += 2
-      if (this.color >= 255) {
-        endScene()
+    if (this.slider_rewinding) {
+      this.slider_current_x -= 4
+      if (this.slider_current_x <= this.slider_start_x) {
+        this.slider_current_x = this.slider_start_x
+        this.slider_rewinding = false
       }
     }
 
     Game.bug.hidden = false
 
-    this.transition.update()
-    this.transition.draw()
+    this.transition_in.update()
+    this.transition_in.draw()
+
+    if (this.lets_play) {
+      this.transition_out.update()
+      this.transition_out.draw()
+    }
+
+    if (!this.transition_out.q.length && !this.song_stopped) {
+      this.endSong()
+      this.song_stopped = true
+    }
+
+    if (this.transition_out.current == null && !this.transition_out.q.length) {
+      this.endScene()
+    }
   }
 
-  touchStarted() {
+  mouseClicked() {
     if (mouseX < 134 && mouseY < 72) {
       document.getElementById('settings').hidden = false
     }
+  }
 
+  touchStarted() {
     if (mouseY > Game.height - 84) {
       this.touching = true
     }
   }
 
   touchMoved() {
-    if (this.fadeOut) return
     if (!this.touching) return
-    this.current_x = constrain(mouseX, this.start_x, this.start_x + 152)
-    if (this.current_x >= this.start_x + 152) {
-      this.fadeOut = true
+
+    this.slider_current_x = constrain(mouseX, this.slider_start_x, this.slider_start_x + 152)
+    if (this.slider_current_x >= this.slider_start_x + 152) {
+      this.lets_play = true
     }
   }
 
   touchEnded() {
     this.touching = false
-    if (this.current_x < this.start_x + 152) {
-      this.rewind = true
+    if (this.slider_current_x < this.slider_start_x + 152) {
+      this.slider_rewinding = true
     }
   }
 
   reset() {
-    this.start_x = Game.width / 2 - 76
-    this.current_x = Game.width / 2 - 76
-    this.rewind = false
-    this.fadeOut = false
+    this.song_started = false
+    this.song_stopped = false
+    this.slider_start_x = Game.width / 2 - 76
+    this.slider_current_x = Game.width / 2 - 76
+    this.slider_rewinding = false
+    this.lets_play = false
     this.touching = false
-    this.color = 0
-    this.music_fading = false
 
-    this.transition = new Poly(
+    this.transition_in = new Poly(
       { x: 0, y: 0, w: Game.width, h: Game.height, color: 255 },
       [
-        { delay: 2000, duration: 2000, props: { alpha: 0 }}
+        this.startBuffer(),
+        { delay:0,  duration: 2000, props: { alpha: 0 }}
+      ]
+    )
+
+    this.transition_out = new Poly(
+      { x: 0, y: 0, w: Game.width, h: Game.height, color: 255, alpha: 0.01 },
+      [
+        { delay: 0, duration: 2000, props: { alpha: 255 }},
+        this.endBuffer()
       ]
     )
   }

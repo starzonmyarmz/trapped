@@ -96,7 +96,7 @@ function setup() {
   Game.scenes.addScene(Intro)
   Game.scenes.addScene(Title)
   Game.scenes.addScene(Home)
-  Game.scenes.addScene(Text)
+  Game.scenes.addScene(Messages)
   Game.scenes.addScene(Insta)
   Game.scenes.addScene(Maps)
 

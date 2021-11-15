@@ -1,4 +1,4 @@
-class Text extends Scene {
+class Messages extends Scene {
   constructor() {
     super()
     this.reset()
@@ -7,9 +7,9 @@ class Text extends Scene {
   draw() {
     background(255)
 
-    if (!this.songStarted) {
+    if (!this.song_started) {
       this.startSong(messages)
-      this.songStarted = true
+      this.song_started = true
     }
 
     Game.shapes = this.shapes
@@ -25,9 +25,9 @@ class Text extends Scene {
     this.transition.update()
     this.transition.draw()
 
-    if (!this.transition.q.length && !this.songStopped) {
+    if (!this.transition.q.length && !this.song_stopped) {
       this.endSong()
-      this.songStopped = true
+      this.song_stopped = true
     }
 
     if (this.transition.current == null && !this.transition.q.length) {
@@ -36,8 +36,8 @@ class Text extends Scene {
   }
 
   reset() {
-    this.songStarted = false
-    this.songStopped = false
+    this.song_started = false
+    this.song_stopped = false
     this.shapes = []
 
     const color = '#1a73e8'
@@ -75,7 +75,8 @@ class Text extends Scene {
 
     this.transition = new Poly(
       { x: 0, y: 0, w: Game.width, h: Game.height, color: 255 },
-      [ this.startBuffer(),
+      [
+        this.startBuffer(),
         { delay: 0, duration: 2000, props: { alpha: 0 }},
         { delay: 30000, duration: 2000, props: { alpha: 255 }},
         this.endBuffer()

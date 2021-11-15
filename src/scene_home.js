@@ -7,9 +7,9 @@ class Home extends Scene {
   draw() {
     background(255)
 
-    if (!this.songStarted) {
+    if (!this.song_started) {
       this.startSong(home)
-      this.songStarted = true
+      this.song_started = true
     }
 
     Game.shapes = this.shapes
@@ -25,9 +25,9 @@ class Home extends Scene {
     this.transition.update()
     this.transition.draw()
 
-    if (!this.transition.q.length && !this.songStopped) {
+    if (!this.transition.q.length && !this.song_stopped) {
       this.endSong()
-      this.songStopped = true
+      this.song_stopped = true
     }
 
     if (this.transition.current == null && !this.transition.q.length) {
@@ -36,8 +36,8 @@ class Home extends Scene {
   }
 
   reset() {
-    this.songStarted = false
-    this.songStopped = false
+    this.song_started = false
+    this.song_stopped = false
     this.shapes = []
 
     const w = Game.width / 4
