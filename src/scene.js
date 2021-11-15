@@ -1,0 +1,1 @@
+class Scene{constructor(){}createCollision(e,s){Game.hits[s]=collideRectCircle(e.x,e.y,e.w,e.h,Game.bug.pos.x,Game.bug.pos.y,Game.bug.radius)}endScene(){Game.hits=[],Game.shapes=[],Game.timestamp=millis(),Game.scenes.scene.oScene.reset(),Game.scenes.showNextScene()}}
