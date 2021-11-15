@@ -4,16 +4,13 @@ class Home extends Scene {
     this.reset()
   }
 
-  setup() {
-    if (Game.sound) {
-      Game.song = home
-      Game.song.setVolume(1)
-      Game.song.loop()
-    }
-  }
-
   draw() {
     background(255)
+
+    if (!this.songStarted) {
+      this.startSong(home)
+      this.songStarted = true
+    }
 
     Game.shapes = this.shapes
     Game.shapes.forEach((shape, i) => {
@@ -28,12 +25,19 @@ class Home extends Scene {
     this.transition.update()
     this.transition.draw()
 
+    if (!this.transition.q.length && !this.songStopped) {
+      this.endSong()
+      this.songStopped = true
+    }
+
     if (this.transition.current == null && !this.transition.q.length) {
       this.endScene()
     }
   }
 
   reset() {
+    this.songStarted = false
+    this.songStopped = false
     this.shapes = []
 
     const w = Game.width / 4
@@ -83,10 +87,11 @@ class Home extends Scene {
     this.transition = new Poly(
       { x: 0, y: 0, w: Game.width, h: Game.height, color: 255 },
       [
-        { delay: 0, duration: 2000, props: { alpha: 0.01 }},
+        this.startBuffer(),
+        { delay: 2000, duration: 2000, props: { alpha: 0.01 }},
         { delay: 0, duration: 0, props: { x: 96, y: 96, w: 48, h: 48 }},
         { delay: 12000, duration: 1000, props: { x: 0, y: 0, w: Game.width, h: Game.height, alpha: 255 }},
-        { delay: 3000, duration: 0, props: {}}
+        this.endBuffer()
       ]
     )
   }

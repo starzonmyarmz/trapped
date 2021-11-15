@@ -96,8 +96,8 @@ function setup() {
   Game.scenes.addScene(Intro)
   Game.scenes.addScene(Title)
   Game.scenes.addScene(Home)
-  Game.scenes.addScene(Insta)
   Game.scenes.addScene(Text)
+  Game.scenes.addScene(Insta)
   Game.scenes.addScene(Maps)
 
   // Start this party
