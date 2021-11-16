@@ -18,10 +18,12 @@ class Scene {
   }
 
   startSong(song) {
-    if (!Game.sound) return
     Game.song = song
-    Game.song.setVolume(1)
+    Game.song.playMode('restart')
+
+    if (!Game.sound) return
     Game.song.loop()
+    Game.song.setVolume(1)
   }
 
   endSong() {

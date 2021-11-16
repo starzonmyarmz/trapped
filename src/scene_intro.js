@@ -5,7 +5,7 @@ class Intro extends Scene {
   }
 
   draw() {
-    background(0)
+    background(this.bg)
 
     fill(255)
     textSize(14)
@@ -13,7 +13,7 @@ class Intro extends Scene {
     text('Tap to begin', Game.width / 2, Game.height / 2)
 
     if (!Game.skip_intro && this.intro_started) {
-      background(0)
+      background(this.bg)
 
       if (millis() - this.timestamp < 4000) {
         if (this.fly_a) {
@@ -69,15 +69,13 @@ class Intro extends Scene {
       } else if (millis() - this.timestamp < 17000) {
         fly.pause()
       } else if (millis() - this.timestamp < 21000) {
-        background(255)
+        this.bg = 255
         tint(0, 255)
       } else if (millis() - this.timestamp < 22000) {
-        background(255)
-        this.scale -= 0.01
+        this.scale -= 0.009
       } else {
-        background(255)
-        // Game.skip_intro = true
-        // localStorage.setItem('trapped_game_intro', Game.skip_intro)
+        Game.skip_intro = true
+        localStorage.setItem('trapped_game_intro', Game.skip_intro)
         this.endScene()
       }
 
@@ -122,5 +120,6 @@ class Intro extends Scene {
     this.fly_c = true
     this.fly_d = true
     this.scale = 1
+    this.bg = 0
   }
 }

@@ -1,7 +1,7 @@
 const params = new URLSearchParams(window.location.search)
 
 if (localStorage.getItem('trapped_game_intro') == null) {
-  localStorage.setItem('trapped_game_intro', true)
+  localStorage.setItem('trapped_game_intro', false)
 }
 
 if (localStorage.getItem('trapped_game_sound') == null) {
@@ -26,7 +26,11 @@ let Game = {
   debug: params.get('debug') ? true : false
 }
 
-let intro_vid, sound, roboto_black, roboto_regular
+// Fonts
+let roboto_black, roboto_regular
+
+// Sound
+let intro, theme, dead, home, messages
 
 const requestAccess = () => {
   DeviceMotionEvent.requestPermission()
