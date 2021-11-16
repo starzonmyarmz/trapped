@@ -30,7 +30,7 @@ let Game = {
 let roboto_black, roboto_regular
 
 // Sound
-let intro, theme, dead, home, messages
+let intro, theme, dead, home, messages, latin
 
 const requestAccess = () => {
   DeviceMotionEvent.requestPermission()
@@ -59,6 +59,7 @@ function preload() {
   dead = loadSound('./assets/dead')
   home = loadSound('./assets/home')
   messages = loadSound('./assets/messages')
+  latin = loadSound('./assets/latin')
 
   // Load image
   fly = loadImage('./assets/fly.gif')
