@@ -42,6 +42,7 @@ const requestAccess = () => {
 }
 
 function preload() {
+  angleMode(DEGREES)
   soundFormats('mp3')
 
   // Load fonts
@@ -49,14 +50,19 @@ function preload() {
   roboto_regular = loadFont('./assets/Roboto-Regular.ttf')
 
   // Load music
+  intro = loadSound('./assets/intro')
   theme = loadSound('./assets/theme')
   dead = loadSound('./assets/dead')
   home = loadSound('./assets/home')
   messages = loadSound('./assets/messages')
 
+  // Load image
+  fly = loadImage('./assets/fly.gif')
+
   if (!Game.skip_intro) {
-    intro_vid = createVideo('assets/intro.webm')
-    intro_vid.hide()
+    // intro_vid = createVideo('assets/intro.mp4', 'assets/intro.webm')
+    // document.querySelector('video').playsInline = true
+    // intro_vid.hide()
   }
 }
 
@@ -88,14 +94,15 @@ function setup() {
   Game.scenes = new SceneManager()
   Game.scenes.addScene(Intro)
   Game.scenes.addScene(Title)
+  Game.scenes.addScene(Maps)
   Game.scenes.addScene(Home)
   Game.scenes.addScene(Messages)
   Game.scenes.addScene(Insta)
-  Game.scenes.addScene(Maps)
+
 
   // Start this party
   createCanvas(Game.width, Game.height)
-  Game.bug = new Bug(Game.width / 2, Game.height / 2 + 32)
+  Game.bug = new Bug(Game.width / 2, Game.height / 2)
   Game.scenes.showScene(Intro)
 }
 
@@ -172,10 +179,6 @@ function draw() {
       Shapes: ${Game.shapes.length}
     `
   }
-}
-
-function mouseClicked() {
-  Game.scenes.handleEvent('mouseClicked')
 }
 
 function touchStarted() {

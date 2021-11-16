@@ -60,13 +60,11 @@ class Title extends Scene {
     }
   }
 
-  mouseClicked() {
-    if (mouseX < 134 && mouseY < 72) {
+  touchStarted() {
+    if (mouseX < 175 && mouseY < 100) {
       document.getElementById('settings').hidden = false
     }
-  }
 
-  touchStarted() {
     if (mouseY > Game.height - 84) {
       this.touching = true
     }
