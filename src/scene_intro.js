@@ -71,16 +71,21 @@ class Intro extends Scene {
       } else if (millis() - this.timestamp < 21000) {
         background(255)
         tint(0, 255)
+      } else if (millis() - this.timestamp < 22000) {
+        background(255)
+        this.scale -= 0.01
       } else {
+        background(255)
         // Game.skip_intro = true
         // localStorage.setItem('trapped_game_intro', Game.skip_intro)
         this.endScene()
-
       }
 
       push()
-      translate(this.fly_x, this.fly_y)
+      imageMode(CENTER)
+      translate(this.fly_x + 12, this.fly_y + 12)
       rotate(this.rotate)
+      scale(this.scale)
       image(fly, 0, 0, 24, 24)
       pop()
     }
@@ -116,5 +121,6 @@ class Intro extends Scene {
     this.fly_b = true
     this.fly_c = true
     this.fly_d = true
+    this.scale = 1
   }
 }
