@@ -93,12 +93,14 @@ function setup() {
   Game.scenes = new SceneManager()
   Game.scenes.addScene(Intro)
   Game.scenes.addScene(Title)
-  Game.scenes.addScene(Twitter)
-  Game.scenes.addScene(Home)
+  Game.scenes.addScene(HomeMusic)
   Game.scenes.addScene(Music)
+  Game.scenes.addScene(HomeMessages)
+  Game.scenes.addScene(Messages)
+  Game.scenes.addScene(HomeTwitter)
+  Game.scenes.addScene(Twitter)
   Game.scenes.addScene(Maps)
   Game.scenes.addScene(Snap)
-  Game.scenes.addScene(Messages)
 
   // Start this party
   createCanvas(Game.width, Game.height)
