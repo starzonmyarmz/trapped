@@ -17,10 +17,13 @@ class Maps extends Scene {
       shape.update()
       shape.draw()
 
-      if (this.transition.alpha > 200) {
+      if (this.transition.alpha < 5) {
         this.createCollision(shape, i)
       }
     })
+
+    this.transition.update()
+    this.transition.draw()
 
     if (!this.transition.q.length && !this.song_stopped) {
       this.endSong()
@@ -72,21 +75,19 @@ class Maps extends Scene {
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     ]
 
-    const sq = 32
+    const sq = 36
     const wh = sq * layout.length
 
     for (let i = 0; i < layout.length; i++) {
       for (let j = 0; j < layout[i].length; j++) {
         if (layout[i][j] === 1) {
           this.shapes.push(new Poly(
-            { x: j * sq, y: Game.height - sq - i * sq, w: sq, h: sq, color: 'red' },
+            { x: j * sq, y: Game.height - sq - i * sq, w: sq, h: sq, color: '#bddec2' },
             [
-              { delay: 2000, duration: 10000, props: { y: wh - sq - i * sq }},
-              { delay: 2000, duration: 10000, props: { x: -wh + Game.width + j * sq }},
-              { delay: 2000, duration: 10000, props: { y: Game.height - sq - i * sq }},
-              { delay: 2000, duration: 10000, props: { x: j * sq }},
-              { delay: 2000, duration: 10000, props: { x: j * sq }},
-              { delay: 2000, duration: 10000, props: { x: j * sq }}
+              { delay: 5000, duration: 15000, props: { y: wh - sq - i * sq }},
+              { delay: 5000, duration: 15000, props: { x: -wh + Game.width + j * sq }},
+              { delay: 5000, duration: 15000, props: { y: Game.height - sq - i * sq }},
+              { delay: 5000, duration: 15000, props: { x: j * sq }},
             ]
           ))
         }
@@ -94,10 +95,11 @@ class Maps extends Scene {
     }
 
     this.transition = new Poly(
-      { x: 0, y: 0, w: Game.width, h: Game.height, alpha: 0.01 },
+      { x: 0, y: 0, w: Game.width, h: Game.height, color: 255 },
       [
         this.startBuffer(),
-        { delay: 60000, duration: 0, props: {}},
+        { delay: 0, duration: 2000, props: { alpha: 0 }},
+        { delay: 80000, duration: 2000, props: { alpha: 255 }},
         this.endBuffer()
       ]
     )

@@ -63,12 +63,6 @@ function preload() {
 
   // Load image
   fly = loadImage('./assets/fly.gif')
-
-  if (!Game.skip_intro) {
-    // intro_vid = createVideo('assets/intro.mp4', 'assets/intro.webm')
-    // document.querySelector('video').playsInline = true
-    // intro_vid.hide()
-  }
 }
 
 function setup() {
@@ -99,13 +93,12 @@ function setup() {
   Game.scenes = new SceneManager()
   Game.scenes.addScene(Intro)
   Game.scenes.addScene(Title)
-  Game.scenes.addScene(Snap)
   Game.scenes.addScene(Twitter)
+  Game.scenes.addScene(Home)
   Game.scenes.addScene(Music)
   Game.scenes.addScene(Maps)
-  Game.scenes.addScene(Home)
+  Game.scenes.addScene(Snap)
   Game.scenes.addScene(Messages)
-
 
   // Start this party
   createCanvas(Game.width, Game.height)

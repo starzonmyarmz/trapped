@@ -3,7 +3,7 @@ class Bug {
     this.pos = createVector(x, y)
     this.vel = createVector(0, 0)
     this.acc = createVector(0, 0)
-    this.radius = 8
+    this.radius = 6
     this.hidden = true
   }
 
@@ -29,6 +29,6 @@ class Bug {
     this.vel.add(this.acc)
     this.pos.add(this.vel)
 
-    this.vel.limit(4)
+    this.vel.limit(3)
   }
 }

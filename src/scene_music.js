@@ -17,22 +17,22 @@ class Music extends Scene {
       shape.update()
       shape.draw()
 
-      // if (this.transition.alpha < 100) {
-      //   this.createCollision(shape, i)
-      // }
+      if (this.transition.alpha < 5) {
+        this.createCollision(shape, i)
+      }
     })
 
     this.transition.update()
     this.transition.draw()
 
-    // if (!this.transition.q.length && !this.song_stopped) {
-    //   this.endSong()
-    //   this.song_stopped = true
-    // }
-    //
-    // if (this.transition.current == null && !this.transition.q.length) {
-    //   this.endScene()
-    // }
+    if (!this.transition.q.length && !this.song_stopped) {
+      this.endSong()
+      this.song_stopped = true
+    }
+
+    if (this.transition.current == null && !this.transition.q.length) {
+      this.endScene()
+    }
   }
 
   reset() {

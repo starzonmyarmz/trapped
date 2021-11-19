@@ -45,35 +45,52 @@ class Home extends Scene {
 
     const layout = [[
       [1, 1, 1, 1,],
-      [1, 1, 1, 1,],
-      [1, 1, 1, 1,],
+      [1, 4, 1, 1,],
+      [1, 1, 2, 1,],
       [1, 1, 1, 1,],
       [1, 1, 0, 0,],
       [0, 0, 0, 0,]
     ],
     [
       [1, 1, 1, 1,],
+      [1, 1, 1, 6,],
       [1, 1, 1, 1,],
       [1, 1, 1, 1,],
-      [1, 1, 1, 1,],
-      [1, 1, 1, 1,],
+      [1, 3, 1, 1,],
       [1, 1, 1, 1,]
     ],
     [
       [1, 1, 1, 1,],
-      [1, 1, 1, 1,],
+      [1, 1, 5, 1,],
       [1, 1, 1, 0,],
       [0, 0, 0, 0,],
       [0, 0, 0, 0,],
       [0, 0, 0, 0,]
     ]]
 
+    const getColor = (value) => {
+      switch (value) {
+        case 1 :
+          return '#000'
+        case 2 :
+          return '#1a73e8'
+        case 3 :
+          return '#ff0000'
+        case 4 :
+          return '#1d9bf0'
+        case 5 :
+          return '#bddec2'
+        case 6 :
+          return '#fffc00'
+      }
+    }
+
     for (let s = 0; s < layout.length; s++) {
       for (let r = 0; r < layout[s].length; r++) {
         for (let c = 0; c < layout[s][r].length; c++) {
-          if (layout[s][r][c] === 1) {
+          if (layout[s][r][c] !== 0) {
             this.shapes.push(new Poly(
-              { x: (Game.width * s + 16) + (w * c), y: h * r + 16, w: 48, h: 48 },
+              { x: (Game.width * s + 16) + (w * c), y: h * r + 16, w: 48, h: 48, color: getColor(layout[s][r][c]) },
               [
                 { delay: 6000, duration: 250, props: { x: 16 + (w * c) + (Game.width * (s - 1)) }},
                 { delay: 4000, duration: 250, props: { x: 16 + (w * c) + (Game.width * (s - 2)) }}

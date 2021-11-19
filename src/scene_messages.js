@@ -17,7 +17,7 @@ class Messages extends Scene {
       shape.update()
       shape.draw()
 
-      if (this.transition.alpha < 100) {
+      if (this.transition.alpha < 5) {
         this.createCollision(shape, i)
       }
     })
