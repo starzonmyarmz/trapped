@@ -64,9 +64,12 @@ function preload() {
   intro = loadSound('./assets/intro')
   theme = loadSound('./assets/theme')
   dead = loadSound('./assets/dead')
-  home = loadSound('./assets/home')
+  home_twitter = loadSound('./assets/home_twitter')
+  home_messages = loadSound('./assets/home_messages')
+  home_music = loadSound('./assets/home_music')
+  home_maps = loadSound('./assets/home_maps')
   messages = loadSound('./assets/messages')
-  latin = loadSound('./assets/latin')
+  twitter = loadSound('./assets/twitter')
 
   // Load image
   fly = loadImage('./assets/fly.gif')
@@ -118,8 +121,9 @@ function draw() {
 
   // Handle Device rotation inputs
   if (Game.input === 'touch') {
-    rX = (rotationY * 7.5 * -1) + (width / 2)
-    rY = (rotationX * 15 * -1) + (height / 2)
+    rX = (rotationY * 5.5 * -1) + (width / 2)
+    rY = (rotationX * 13 * -1) + (height / 2)
+
     Game.bug.update(
       constrain(rX, 0, Game.width),
       constrain(rY, 0, Game.height)
@@ -164,7 +168,7 @@ function draw() {
     })
 
     // Back to home screen after a short delay
-    if (millis() - Game.timestamp > 2000) {
+    if (millis() - Game.timestamp > 2500) {
       Game.hits = []
       Game.shapes = []
       Game.over = false

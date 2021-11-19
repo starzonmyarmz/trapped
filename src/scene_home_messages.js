@@ -8,7 +8,7 @@ class HomeMessages extends Scene {
     background(255)
 
     if (!this.song_started) {
-      this.startSong(home)
+      this.startSong(home_messages)
       this.song_started = true
     }
 

@@ -44,7 +44,7 @@ class Messages extends Scene {
     const color = '#1a73e8'
     const gap = 16
 
-    let prevy = 0
+    let prevy = 16
 
     for (let i = 0; i < 30; i++) {
       let prob = random() >=  0.5
@@ -56,7 +56,7 @@ class Messages extends Scene {
       let triy = prevy + texth - 8
       let tang = prob ? 'triangle_right' : 'triangle_left'
 
-      prevy = texty + texth + gap
+      prevy = texty + texth + 32
 
       this.shapes.push(
         new Poly(

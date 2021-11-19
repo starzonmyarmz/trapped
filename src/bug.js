@@ -21,7 +21,7 @@ class Bug {
       const mouse = createVector(x, y)
 
       mouse.sub(this.pos)
-      mouse.setMag(0.8)
+      mouse.setMag(2)
 
       this.acc = mouse
     }

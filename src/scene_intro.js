@@ -93,6 +93,8 @@ class Intro extends Scene {
     if (!Game.permission) return
     if (this.intro_started) return
 
+    this.timestamp = millis()
+
     if (Game.skip_intro) {
       this.endScene()
     } else {

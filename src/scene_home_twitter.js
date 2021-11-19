@@ -8,7 +8,7 @@ class HomeTwitter extends Scene {
     background(255)
 
     if (!this.song_started) {
-      this.startSong(home)
+      this.startSong(home_twitter)
       this.song_started = true
     }
 

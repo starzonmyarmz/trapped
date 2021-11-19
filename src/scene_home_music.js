@@ -8,7 +8,7 @@ class HomeMusic extends Scene {
     background(255)
 
     if (!this.song_started) {
-      this.startSong(home)
+      this.startSong(home_music)
       this.song_started = true
     }
 
