@@ -99,12 +99,12 @@ function setup() {
   Game.scenes = new SceneManager()
   Game.scenes.addScene(Intro)
   Game.scenes.addScene(Title)
+  Game.scenes.addScene(Snap)
   Game.scenes.addScene(Twitter)
   Game.scenes.addScene(Music)
   Game.scenes.addScene(Maps)
   Game.scenes.addScene(Home)
   Game.scenes.addScene(Messages)
-  Game.scenes.addScene(Insta)
 
 
   // Start this party
