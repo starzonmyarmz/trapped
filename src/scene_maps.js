@@ -8,7 +8,7 @@ class Maps extends Scene {
     background(255)
 
     if (!this.song_started) {
-      this.startSong(latin)
+      this.startSong(twitter)
       this.song_started = true
     }
 
