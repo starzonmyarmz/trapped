@@ -105,6 +105,8 @@ function setup() {
     Game.scenes.addScene(levels[level])
   }
 
+  Game.scenes.addScene(YouWin)
+
   // Start this party
   createCanvas(Game.width, Game.height)
   Game.bug = new Bug(Game.width / 2, Game.height / 2)
