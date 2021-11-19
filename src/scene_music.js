@@ -31,6 +31,7 @@ class Music extends Scene {
     }
 
     if (this.transition.current == null && !this.transition.q.length) {
+      this.saveProgress('HomeMaps')
       this.endScene()
     }
   }

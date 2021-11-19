@@ -33,6 +33,7 @@ class HomeMessages extends Scene {
     }
 
     if (this.transition.current == null && !this.transition.q.length) {
+      this.saveProgress('Messages')
       this.endScene()
     }
   }

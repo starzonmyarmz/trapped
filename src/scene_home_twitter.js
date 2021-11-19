@@ -33,6 +33,7 @@ class HomeTwitter extends Scene {
     }
 
     if (this.transition.current == null && !this.transition.q.length) {
+      this.saveProgress('Twitter')
       this.endScene()
     }
   }

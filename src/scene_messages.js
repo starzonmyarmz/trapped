@@ -31,6 +31,7 @@ class Messages extends Scene {
     }
 
     if (this.transition.current == null && !this.transition.q.length) {
+      this.saveProgress('HomeTwitter')
       this.endScene()
     }
   }

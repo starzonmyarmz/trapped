@@ -26,6 +26,13 @@ let Game = {
   debug: params.get('debug') ? true : false
 }
 
+// Levels classes
+const levels = {
+  HomeMessages, Messages,
+  HomeTwitter, Twitter, HomeMusic, Music,
+  HomeMaps, Maps, HomeSnap, Snap
+}
+
 // Fonts
 let roboto_black, roboto_regular
 
@@ -93,16 +100,10 @@ function setup() {
   Game.scenes = new SceneManager()
   Game.scenes.addScene(Intro)
   Game.scenes.addScene(Title)
-  Game.scenes.addScene(HomeMessages)
-  Game.scenes.addScene(Messages)
-  Game.scenes.addScene(HomeTwitter)
-  Game.scenes.addScene(Twitter)
-  Game.scenes.addScene(HomeMusic)
-  Game.scenes.addScene(Music)
-  Game.scenes.addScene(HomeMaps)
-  Game.scenes.addScene(Maps)
-  Game.scenes.addScene(HomeSnap)
-  Game.scenes.addScene(Snap)
+
+  for (level in levels) {
+    Game.scenes.addScene(levels[level])
+  }
 
   // Start this party
   createCanvas(Game.width, Game.height)

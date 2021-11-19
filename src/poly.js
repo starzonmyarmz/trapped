@@ -23,6 +23,7 @@ class Poly {
     c.setAlpha(this.alpha)
 
     fill(c)
+    noStroke()
 
     switch (this.shape) {
       case 'rect' :

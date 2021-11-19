@@ -33,6 +33,7 @@ class HomeMaps extends Scene {
     }
 
     if (this.transition.current == null && !this.transition.q.length) {
+      this.saveProgress('Maps')
       this.endScene()
     }
   }

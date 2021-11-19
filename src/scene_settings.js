@@ -15,6 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('[data-intro]').addEventListener('click', () => {
     Game.skip_intro = false
     localStorage.setItem('trapped_game_intro', Game.skip_intro)
+    location.reload()
+  })
+
+  document.querySelector('[data-progress]').addEventListener('click', ({target}) => {
+    localStorage.removeItem('trapped_game_progress')
+    target.innerText = "Progress reset!"
   })
 
   if (navigator.canShare) {

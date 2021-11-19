@@ -56,7 +56,7 @@ class Title extends Scene {
     }
 
     if (this.transition_out.current == null && !this.transition_out.q.length) {
-      this.endScene()
+      this.endScene(localStorage.getItem('trapped_game_progress'))
     }
   }
 

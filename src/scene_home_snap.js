@@ -33,6 +33,7 @@ class HomeSnap extends Scene {
     }
 
     if (this.transition.current == null && !this.transition.q.length) {
+      saveProgress('Snap')
       this.endScene()
     }
   }

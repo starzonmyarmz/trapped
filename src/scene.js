@@ -31,11 +31,20 @@ class Scene {
     Game.song.setVolume(0, 3)
   }
 
-  endScene() {
+  endScene(scene) {
     Game.hits = []
     Game.shapes = []
     Game.timestamp = millis()
     Game.scenes.scene.oScene.reset()
-    Game.scenes.showNextScene()
+
+    if (scene) {
+      Game.scenes.showScene(levels[scene])
+    } else {
+      Game.scenes.showNextScene()
+    }
+  }
+
+  saveProgress(scene) {
+    localStorage.setItem('trapped_game_progress', scene)
   }
 }
