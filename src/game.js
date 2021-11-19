@@ -93,13 +93,15 @@ function setup() {
   Game.scenes = new SceneManager()
   Game.scenes.addScene(Intro)
   Game.scenes.addScene(Title)
-  Game.scenes.addScene(HomeMusic)
-  Game.scenes.addScene(Music)
   Game.scenes.addScene(HomeMessages)
   Game.scenes.addScene(Messages)
   Game.scenes.addScene(HomeTwitter)
   Game.scenes.addScene(Twitter)
+  Game.scenes.addScene(HomeMusic)
+  Game.scenes.addScene(Music)
+  Game.scenes.addScene(HomeMaps)
   Game.scenes.addScene(Maps)
+  Game.scenes.addScene(HomeSnap)
   Game.scenes.addScene(Snap)
 
   // Start this party

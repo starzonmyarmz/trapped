@@ -1,4 +1,4 @@
-class HomeMusic extends Scene {
+class HomeMaps extends Scene {
   constructor() {
     super()
     this.reset()
@@ -52,11 +52,9 @@ class HomeMusic extends Scene {
             this.shapes.push(new Poly(
               { x: (Game.width * s + 28) + (w * c), y: h * r + 28, w: 48, h: 48, color: getHomeColor(layout[s][r][c]) },
               [
-                { delay: 4000, duration: 500, props: { x: 28 + (w * c) + (Game.width * (s - 2)) }},
-                { delay: 2000, duration: 500, props: { x: 28 + (w * c) + (Game.width * (s - 0)) }},
-                { delay: 4000, duration: 500, props: { x: 28 + (w * c) + (Game.width * (s - 2)) }},
-                { delay: 4000, duration: 250, props: { x: 28 + (w * c) + (Game.width * (s - 1)) }},
-
+                { delay: 6000, duration: 250, props: { x: 28 + (w * c) + (Game.width * (s - 1)) }},
+                { delay: 4000, duration: 250, props: { x: 28 + (w * c) + (Game.width * (s - 2)) }},
+                { delay: 4000, duration: 500, props: { x: 28 + (w * c) + (Game.width * (s - 0)) }}
               ]
             ))
           }
@@ -69,16 +67,16 @@ class HomeMusic extends Scene {
       [
         this.startBuffer(),
         { delay: 0, duration: 2000, props: { alpha: 0 }},
-        { delay: 14000, duration: 2000, props: { alpha: 255 }},
+        { delay: 12000, duration: 2000, props: { alpha: 255 }},
         this.endBuffer()
       ]
     )
 
     this.transition_out = new Poly(
-      { x: 0, y: 0, w: 0, h: 0, color: '#ff0000' },
+      { x: 0, y: 0, w: 0, h: 0, color: '#bddec2' },
       [
         this.startBuffer(),
-        { delay: 16000, duration: 0, props: { x: 100, y: 326, w: 48, h: 48 }},
+        { delay: 14000, duration: 0, props: { x: 100, y: 102, w: 48, h: 48 }},
         { delay: 0, duration: 250, props: { x: 0, y: 0, w: Game.width, h: Game.height }},
         this.endBuffer()
       ]

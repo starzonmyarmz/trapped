@@ -26,7 +26,7 @@ const layout = [[
 const getHomeColor = (value) => {
   switch (value) {
     case 1 :
-      return '#000'
+      return '#555'
     case 2 :
       return '#1a73e8'
     case 3 :

@@ -17,7 +17,7 @@ class HomeMessages extends Scene {
       shape.update()
       shape.draw()
 
-      if (this.transition.x > 1) {
+      if (this.transition.alpha < 5) {
         this.createCollision(shape, i)
       }
     })
