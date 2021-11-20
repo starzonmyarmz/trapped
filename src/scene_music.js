@@ -8,7 +8,7 @@ class Music extends Scene {
     background(255)
 
     if (!this.song_started) {
-      this.startSong(messages)
+      this.startSong(music)
       this.song_started = true
     }
 

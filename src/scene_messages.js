@@ -45,8 +45,10 @@ class Messages extends Scene {
     const gap = 16
 
     let prevy = 16
+    let dur = 50000
+    let dist = 2000
 
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 40; i++) {
       let prob = random() >=  0.5
       let textw = random(40, 200)
       let texth = textw < 150 ? 32 : 32 * floor(random(1, 5))
@@ -62,13 +64,13 @@ class Messages extends Scene {
         new Poly(
           { x: textx, y: texty, w: textw, h: texth, color: color },
           [
-            { delay: 6000, duration: 30000, props: { y: texty - 1500 }}
+            { delay: 6000, duration: dur, props: { y: texty - dist }}
           ]
         ),
         new Poly(
           { x: trix, y: triy, w: 8, h: 8, color: color, shape: tang },
           [
-            { delay: 6000, duration: 30000, props: { y: triy - 1500 }}
+            { delay: 6000, duration: dur, props: { y: triy - dist }}
           ]
         ),
       )
@@ -79,7 +81,7 @@ class Messages extends Scene {
       [
         this.startBuffer(),
         { delay: 0, duration: 2000, props: { alpha: 0 }},
-        { delay: 30000, duration: 2000, props: { alpha: 255 }},
+        { delay: dur, duration: 2000, props: { alpha: 255 }},
         this.endBuffer()
       ]
     )

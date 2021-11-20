@@ -37,7 +37,7 @@ const levels = {
 let roboto_black, roboto_regular
 
 // Sound
-let intro, theme, dead, home, messages, latin
+let intro, theme, dead, home, messages, twitter, music, maps
 
 const requestAccess = () => {
   DeviceMotionEvent.requestPermission()
@@ -70,6 +70,8 @@ function preload() {
   home_maps = loadSound('./assets/home_maps')
   messages = loadSound('./assets/messages')
   twitter = loadSound('./assets/twitter')
+  music = loadSound('./assets/music')
+  maps = loadSound('./assets/maps')
 
   // Load image
   fly = loadImage('./assets/fly.gif')
