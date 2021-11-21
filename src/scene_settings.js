@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('[data-share]').addEventListener('click', async () => {
       await navigator.share({
         title: document.querySelector('title'),
-        text: 'play our game',
+        text: 'A survival game about a fly trying to survive after mystyriously being sucked into a phone.',
         url: 'https://iamdanielmarino.com'
       })
     })
