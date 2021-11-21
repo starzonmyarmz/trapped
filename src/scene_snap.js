@@ -12,34 +12,46 @@ class Snap extends Scene {
       this.song_started = true
     }
 
+    if (Game.hits.length > 0) {
+      this.safe_shapes = []
+    }
+
     Game.shapes = this.shapes
     Game.shapes.forEach((shape, i) => {
       shape.update()
       shape.draw()
 
-      // if (this.transition.alpha <= 5) { }
+      if (this.transition.alpha > 5) return
+      if (Game.bug.pos.x > this.current_safe_shape.x &&
+          Game.bug.pos.x < this.current_safe_shape.x + this.current_safe_shape.w &&
+          Game.bug.pos.y > this.current_safe_shape.y &&
+          Game.bug.pos.y < this.current_safe_shape.y + this.current_safe_shape.y) return
+
+      this.createCollision(shape, i)
     })
 
-    this.safe_shapes.forEach((safe) => {
+    this.safe_shapes.forEach((safe, i) => {
       safe.update()
       safe.draw()
+
+      if (safe.current == null && !safe.q.length) {
+        this.safe_shapes.shift()
+        this.current_safe_shape = this.safe_shapes[0]
+      }
     })
-
-
-
 
     this.transition.update()
     this.transition.draw()
 
-    // if (!this.transition.q.length && !this.song_stopped) {
-    //   this.endSong()
-    //   this.song_stopped = true
-    // }
-    //
-    // if (this.transition.current == null && !this.transition.q.length) {
-    //   saveProgress('YouWin')
-    //   this.endScene()
-    // }
+    if (!this.transition.q.length && !this.song_stopped) {
+      this.endSong()
+      this.song_stopped = true
+    }
+
+    if (this.transition.current == null && !this.transition.q.length) {
+      saveProgress('YouWin')
+      this.endScene()
+    }
   }
 
   reset() {
@@ -98,7 +110,7 @@ class Snap extends Scene {
 
     this.safe_shapes.push(
       new Poly(
-        { x: random(0, Game.width - 16), y: random(0, Game.height - 256), w: 16, h: 256, color: 255, alpha: 0.01 }, [
+        { x: random(0, Game.width - 24), y: random(0, Game.height - 24), w: 24, h: 24, color: 255, alpha: 0.01 }, [
           { delay: 44000, duration: 0, props: { alpha: 255 }},
           { delay: 11000, duration: 0, props: { alpha: 0 }}
         ])
@@ -121,5 +133,7 @@ class Snap extends Scene {
         this.endBuffer()
       ]
     )
+
+    this.current_safe_shape = this.safe_shapes[0]
   }
 }
