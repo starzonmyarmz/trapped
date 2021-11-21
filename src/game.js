@@ -68,10 +68,12 @@ function preload() {
   home_messages = loadSound('./assets/home_messages')
   home_music = loadSound('./assets/home_music')
   home_maps = loadSound('./assets/home_maps')
+  home_snap = loadSound('./assets/home_maps')
   messages = loadSound('./assets/messages')
   twitter = loadSound('./assets/twitter')
   music = loadSound('./assets/music')
   maps = loadSound('./assets/maps')
+  snap = loadSound('./assets/snap')
 
   // Load image
   fly = loadImage('./assets/fly.gif')

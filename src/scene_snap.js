@@ -8,7 +8,7 @@ class Snap extends Scene {
     background(255)
 
     if (!this.song_started) {
-      this.startSong(messages)
+      this.startSong(snap)
       this.song_started = true
     }
 
