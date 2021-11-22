@@ -21,9 +21,10 @@ class Scene {
     Game.song = song
     Game.song.playMode('restart')
 
-    if (!Game.sound) return
-    Game.song.loop()
-    Game.song.setVolume(1)
+    if (Game.sound) {
+      Game.song.loop()
+      Game.song.setVolume(1)
+    }
   }
 
   endSong() {

@@ -37,7 +37,7 @@ const levels = {
 let roboto_black, roboto_regular
 
 // Sound
-let intro, theme, dead, home, messages, twitter, music, maps
+let dummy, intro, theme, dead, home, messages, twitter, music, maps
 
 const requestAccess = () => {
   DeviceMotionEvent.requestPermission()
@@ -54,13 +54,14 @@ const requestAccess = () => {
 
 function preload() {
   angleMode(DEGREES)
-  soundFormats('mp3')
+  soundFormats('mp3', 'ogg')
 
   // Load fonts
   roboto_black = loadFont('./assets/Roboto-Black.ttf')
   roboto_regular = loadFont('./assets/Roboto-Regular.ttf')
 
   // Load music
+  dummy = loadSound('./assets/dummy')
   theme = loadSound('./assets/theme')
   dead = loadSound('./assets/dead')
   home_twitter = loadSound('./assets/home_twitter')

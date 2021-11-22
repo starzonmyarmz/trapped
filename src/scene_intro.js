@@ -27,6 +27,12 @@ class Intro extends Scene {
     if (!Game.permission) return
     if (this.intro_started) return
 
+    // A touch interaction is required
+    // to start audio in most browsers.
+    Game.song = dummy
+    Game.song.play()
+    Game.song.setVolume(0)
+
     if (Game.skip_intro) {
       this.endScene()
     } else {
