@@ -16,6 +16,8 @@ class Intro extends Scene {
       image(intro, 0, 0, Game.width, Game.height)
 
       if (intro.elt.ended) {
+        Game.skip_intro = true
+        localStorage.setItem('trapped_game_intro', Game.skip_intro)
         this.endScene()
       }
     }
