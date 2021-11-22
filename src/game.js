@@ -61,7 +61,6 @@ function preload() {
   roboto_regular = loadFont('./assets/Roboto-Regular.ttf')
 
   // Load music
-  intro = loadSound('./assets/intro')
   theme = loadSound('./assets/theme')
   dead = loadSound('./assets/dead')
   home_twitter = loadSound('./assets/home_twitter')
@@ -74,6 +73,9 @@ function preload() {
   music = loadSound('./assets/music')
   maps = loadSound('./assets/maps')
   snap = loadSound('./assets/snap')
+
+  // Load video
+  intro = createVideo('./assets/intro.mov', './assets/intro.webm')
 
   // Load image
   fly = loadImage('./assets/fly.gif')
@@ -113,6 +115,10 @@ function setup() {
   }
 
   Game.scenes.addScene(YouWin)
+
+  // Video stuff
+  intro.elt.setAttribute('playsinline', true)
+  intro.elt.hidden = true
 
   // Start this party
   createCanvas(Game.width, Game.height)
