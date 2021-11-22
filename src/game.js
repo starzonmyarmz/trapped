@@ -54,7 +54,7 @@ const requestAccess = () => {
 
 function preload() {
   angleMode(DEGREES)
-  soundFormats('mp3', 'ogg')
+  soundFormats('mp3')
 
   // Load fonts
   roboto_black = loadFont('./assets/Roboto-Black.ttf')
@@ -76,10 +76,11 @@ function preload() {
   snap = loadSound('./assets/snap')
 
   // Load video
-  intro = createVideo('./assets/intro.mov', './assets/intro.webm')
-
-  // Load image
-  fly = loadImage('./assets/fly.gif')
+  if (!Game.skip_intro) {
+    intro = createVideo('./assets/intro.mov')
+    intro.elt.setAttribute('playsinline', true)
+    intro.elt.hidden = true
+  }
 }
 
 function setup() {
@@ -116,10 +117,6 @@ function setup() {
   }
 
   Game.scenes.addScene(YouWin)
-
-  // Video stuff
-  intro.elt.setAttribute('playsinline', true)
-  intro.elt.hidden = true
 
   // Start this party
   createCanvas(Game.width, Game.height)
