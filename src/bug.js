@@ -2,7 +2,6 @@ class Bug {
   constructor(x, y) {
     this.pos = createVector(x, y)
     this.vel = createVector(0, 0)
-    this.acc = createVector(0, 0)
     this.radius = 6
     this.hidden = true
   }
@@ -13,22 +12,18 @@ class Bug {
     fill(7)
     noStroke()
     ellipseMode(CENTER)
-    ellipse(this.pos.x, this.pos.y, this.radius)
+    ellipse(this.pos.x + random(-1, 1), this.pos.y + random(-1, 1), this.radius)
   }
 
   update(x, y) {
     if (!this.hidden) {
-      const mouse = createVector(x, y)
-
-      mouse.sub(this.pos)
-      mouse.setMag(2)
-
-      this.acc = mouse
+      this.vel.set(x, y)
     }
 
-    this.vel.add(this.acc)
+    this.vel.limit(20)
     this.pos.add(this.vel)
 
-    this.vel.limit(3)
+    this.pos.x = constrain(this.pos.x, 0, Game.width)
+    this.pos.y = constrain(this.pos.y, 0, Game.height)
   }
 }

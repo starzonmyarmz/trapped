@@ -13,7 +13,6 @@ let Game = {
   height: 480,
   scenes: null,
   permission: false,
-  input: params.get('input') === 'mouse' ? 'mouse' : 'touch',
   timestamp: 0,
   hits: [],
   shapes: [],
@@ -23,7 +22,6 @@ let Game = {
   bug: null,
   over: false,
   godmode: params.get('godmode') ? true : false,
-  debug: params.get('debug') ? true : false
 }
 
 // Levels classes
@@ -90,12 +88,6 @@ function preload() {
 }
 
 function setup() {
-  if (Game.debug) {
-    document.querySelector('html').classList.add('debug')
-    document.body.insertAdjacentHTML('afterBegin', '<div id="debug"></div>')
-    document.getElementById('debug')
-  }
-
   // Check for DeviceMotionEvent and Permissions
   if (typeof(DeviceMotionEvent) !== 'undefined' && typeof(DeviceMotionEvent.requestPermission) === 'function' ) {
     DeviceMotionEvent.requestPermission()
@@ -129,23 +121,11 @@ function draw() {
   if (!Game.permission) return
 
   // Handle Device rotation inputs
-  if (Game.input === 'touch') {
-    rX = (rotationY * 5.5 * -1) + (width / 2)
-    rY = (rotationX * 13 * -1) + (height / 2)
-
-    Game.bug.update(
-      constrain(rX, 0, Game.width),
-      constrain(rY, 0, Game.height)
-    )
-  }
-
-  // Handle mouse inputs
-  if (Game.input === 'mouse') {
-    Game.bug.update(
-      constrain(mouseX, 0, Game.width),
-      constrain(mouseY, 0, Game.height)
-    )
-  }
+  vX = constrain(rotationY, -60, 60)
+  vY = constrain(rotationX, -60, 60)
+  vX = constrain(abs(vX) - 2, 0, 60) * (vX < 0 ? -1 : 1)
+  vY = constrain(abs(vY) - 2, 0, 60) * (vY < 0 ? -1 : 1)
+  Game.bug.update(vX / 3, vY / 3)
 
   // If there's collision…
   if (!Game.godmode) {
@@ -190,15 +170,6 @@ function draw() {
   // Draw all the things
   Game.scenes.draw()
   Game.bug.draw()
-
-  if (Game.debug) {
-    document.getElementById('debug').innerHTML = `
-      Frames: ${int(frameRate())} <br>
-      ${Game.input === 'touch' ? 'Rotation: ' + int(rX) + ', ' + int(rY) : ''}
-      ${Game.input === 'mouse' ? 'Mouse: ' + int(mouseX) + ', ' + int(mouseY) : ''} <br>
-      Shapes: ${Game.shapes.length}
-    `
-  }
 }
 
 function touchStarted() {
