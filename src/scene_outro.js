@@ -18,6 +18,10 @@ class Outro extends Scene {
       image(outro, 0, 0, Game.width, Game.height)
 
       if (outro.elt.ended) {
+        Game.song.setVolume(0, 3)
+      }
+
+      if (Game.song.getVolume() <= .01) {
         this.saveProgress('HomeMessages')
         this.endScene('Title')
       }
@@ -27,6 +31,10 @@ class Outro extends Scene {
   touchEnded() {
     if (!Game.permission) return
     if (this.outro_started) return
+
+    Game.song = finale
+    Game.song.play()
+    Game.song.setVolume(1)
     outro.play()
     this.outro_started = true
   }

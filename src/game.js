@@ -37,7 +37,7 @@ const levels = {
 let text_bold, text_regular
 
 // Sound
-let dummy, intro, theme, dead, home, messages, twitter, music, maps, snap, outro
+let dummy, intro, theme, dead, home, messages, twitter, music, maps, snap, finale, outro
 
 const requestAccess = () => {
   DeviceMotionEvent.requestPermission()
@@ -74,6 +74,7 @@ function preload() {
   music = loadSound('./assets/music')
   maps = loadSound('./assets/maps')
   snap = loadSound('./assets/snap')
+  finale = loadSound('./assets/finale')
 
   // Load video
   if (!Game.skip_intro) {
