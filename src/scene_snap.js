@@ -49,7 +49,7 @@ class Snap extends Scene {
     }
 
     if (this.transition.current == null && !this.transition.q.length) {
-      saveProgress('YouWin')
+      saveProgress('Outro')
       this.endScene()
     }
   }

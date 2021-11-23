@@ -10,7 +10,7 @@ class Intro extends Scene {
     fill(255)
     textSize(14)
     textAlign(CENTER, CENTER)
-    text('Tap to begin', Game.width / 2, Game.height / 2)
+    text('tap to begin', Game.width / 2, Game.height / 2)
 
     if (!Game.skip_intro && this.intro_started) {
       image(intro, 0, 0, Game.width, Game.height)

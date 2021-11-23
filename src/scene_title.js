@@ -15,22 +15,22 @@ class Title extends Scene {
     fill(0)
     textSize(48)
     textAlign(CENTER, TOP)
-    textFont(roboto_black)
-    text('Trapped', Game.width / 2, Game.height / 4 - 16)
+    textFont(text_bold)
+    text('trapped', Game.width / 2, Game.height / 4 - 32)
 
     textSize(12)
     textAlign(LEFT, TOP)
-    textFont(roboto_regular)
-    text('Settings', 12, 12)
+    textFont(text_regular)
+    text('settings', 12, 12)
 
     textAlign(CENTER, BOTTOM)
-    text('Swipe to play', Game.width / 2, Game.height - 16)
+    text('swipe to play', Game.width / 2, Game.height - 24)
 
     rectMode(CENTER)
-    rect(Game.width / 2, Game.height - 64, 200, 48)
+    rect(Game.width / 2, Game.height - 72, 200, 48)
 
     fill(255)
-    rect(this.slider_current_x, Game.height - 64, 36, 36)
+    rect(this.slider_current_x, Game.height - 72, 36, 36)
 
     if (this.slider_rewinding) {
       this.slider_current_x -= 4

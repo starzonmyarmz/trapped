@@ -28,16 +28,18 @@ let Game = {
 
 // Levels classes
 const levels = {
+  Intro, Title,
   HomeMessages, Messages,
   HomeTwitter, Twitter, HomeMusic, Music,
-  HomeMaps, Maps, HomeSnap, Snap
+  HomeMaps, Maps, HomeSnap, Snap,
+  Outro
 }
 
 // Fonts
-let roboto_black, roboto_regular
+let text_bold, text_regular
 
 // Sound
-let dummy, intro, theme, dead, home, messages, twitter, music, maps
+let dummy, intro, theme, dead, home, messages, twitter, music, maps, snap, outro
 
 const requestAccess = () => {
   DeviceMotionEvent.requestPermission()
@@ -57,8 +59,8 @@ function preload() {
   soundFormats('mp3')
 
   // Load fonts
-  roboto_black = loadFont('./assets/Roboto-Black.ttf')
-  roboto_regular = loadFont('./assets/Roboto-Regular.ttf')
+  text_bold = loadFont('./assets/Outfit-ExtraBold.ttf')
+  text_regular = loadFont('./assets/Outfit-Light.ttf')
 
   // Load music
   dummy = loadSound('./assets/dummy')
@@ -81,6 +83,10 @@ function preload() {
     intro.elt.setAttribute('playsinline', true)
     intro.elt.hidden = true
   }
+
+  outro = createVideo('./assets/outro.mp4')
+  outro.elt.setAttribute('playsinline', true)
+  outro.elt.hidden = true
 }
 
 function setup() {
@@ -109,14 +115,9 @@ function setup() {
 
   // Add scenes to p5.sceneManager
   Game.scenes = new SceneManager()
-  Game.scenes.addScene(Intro)
-  Game.scenes.addScene(Title)
-
   for (level in levels) {
     Game.scenes.addScene(levels[level])
   }
-
-  Game.scenes.addScene(YouWin)
 
   // Start this party
   createCanvas(Game.width, Game.height)
