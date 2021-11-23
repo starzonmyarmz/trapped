@@ -76,7 +76,7 @@ class Maps extends Scene {
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     ]
 
-    const sq = 36
+    const sq = 42
     const wh = sq * layout.length
 
     for (let i = 0; i < layout.length; i++) {

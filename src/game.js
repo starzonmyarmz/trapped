@@ -84,7 +84,7 @@ function preload() {
     intro.elt.hidden = true
   }
 
-  outro = createVideo('./assets/outro.mp4')
+  outro = createVideo('./assets/outro.mov')
   outro.elt.setAttribute('playsinline', true)
   outro.elt.hidden = true
 }
