@@ -5,7 +5,7 @@
   "scripts": {
     "build": "./bin/build"
   },
-  "repository": "git@github.com:starzonmyarmz/gameoff-jam-2021.git",
+  "repository": "git@github.com:starzonmyarmz/trapped.git",
   "author": "Daniel Marino <starzonmyarmz@gmail.com>",
   "license": "MIT",
   "dependencies": {
