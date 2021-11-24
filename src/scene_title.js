@@ -12,6 +12,8 @@ class Title extends Scene {
       this.song_started = true
     }
 
+    Game.bug.hidden = false
+
     fill(0)
     textSize(48)
     textAlign(CENTER, TOP)
@@ -54,7 +56,6 @@ class Title extends Scene {
     }
 
     if (this.transition_out.current == null && !this.transition_out.q.length) {
-      Game.bug.hidden = false
       this.endScene(localStorage.getItem('trapped_game_progress'))
     }
   }
