@@ -7,7 +7,8 @@ html, body, main {
 }
 
 body {
-  background: #000;
+  background: #000 url('assets/logo_white.png') 50% 50% no-repeat;
+  background-size: 158px 19px;
   color: #fff;
   font-family: 'Roboto';
   margin: 0;
@@ -130,6 +131,5 @@ canvas {
 }
 
 #p5_loading {
-  display: grid;
-  place-items: center;
+  display: none;
 }

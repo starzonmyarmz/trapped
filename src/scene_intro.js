@@ -5,12 +5,13 @@ class Intro extends Scene {
   }
 
   draw() {
-    background(0)
-
+    background('rgba(0, 0, 0, 0)')
+    fill(0)
+    rect(0, Game.height - 48, Game.width, 48)
     fill(255)
     textSize(14)
-    textAlign(CENTER, CENTER)
-    text('tap to begin', Game.width / 2, Game.height / 2)
+    textAlign(CENTER, BOTTOM)
+    text('tap to begin', Game.width / 2, Game.height - 24)
 
     if (!Game.skip_intro && this.intro_started) {
       image(intro, 0, 0, Game.width, Game.height)

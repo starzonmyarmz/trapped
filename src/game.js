@@ -33,11 +33,8 @@ const levels = {
   Outro
 }
 
-// Fonts
-let text_bold, text_regular
-
-// Sound
-let dummy, intro, theme, dead, home, messages, twitter, music, maps, snap, finale, outro
+// Globals
+let text_bold, text_regular, dummy, intro, theme, dead, home, messages, twitter, music, maps, snap, finale, outro
 
 const requestAccess = () => {
   DeviceMotionEvent.requestPermission()
