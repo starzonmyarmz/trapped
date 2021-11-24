@@ -19,5 +19,3 @@ minify lib/p5.scenemanager.js > trapped/lib/p5.scenemanager.js
 for file in src/*; do
   minify $file > trapped/$file
 done
-
-rm trapped/assets/.DS_Store
