@@ -78,7 +78,7 @@ class Snap extends Scene {
 
     this.safe_shapes.push(
       new Poly(
-        { x: random(0, Game.width - 144), y: random(0, Game.height - 48), w: 144, h: 48, color: 255, alpha: 0.01 }, [
+        { x: random(0, Game.width - 144), y: random(0, Game.height - 144), w: 144, h: 144, color: 255, alpha: 0.01 }, [
           { delay: 0, duration: 0, props: { alpha: 255 }},
           { delay: 11000, duration: 0, props: { alpha: 0 }},
         ])
@@ -86,7 +86,7 @@ class Snap extends Scene {
 
     this.safe_shapes.push(
       new Poly(
-        { x: random(0, Game.width - 56), y: random(0, Game.height - 56), w: 56, h: 56, shape: 'ellipse', color: 255, alpha: 0.01 }, [
+        { x: random(0, Game.width - 72), y: random(0, Game.height - 72), w: 72, h: 72, color: 255, alpha: 0.01 }, [
           { delay: 11000, duration: 0, props: { alpha: 255 }},
           { delay: 11000, duration: 0, props: { alpha: 0 }},
         ])
@@ -94,7 +94,7 @@ class Snap extends Scene {
 
     this.safe_shapes.push(
       new Poly(
-        { x: random(0, Game.width - 32), y: random(0, Game.height - 32), w: 32, h: 32, color: 255, alpha: 0.01 }, [
+        { x: random(0, Game.width - 48), y: random(0, Game.height - 48), w: 48, h: 48, color: 255, alpha: 0.01 }, [
           { delay: 22000, duration: 0, props: { alpha: 255 }},
           { delay: 11000, duration: 0, props: { alpha: 0 }},
         ])
@@ -102,7 +102,7 @@ class Snap extends Scene {
 
     this.safe_shapes.push(
       new Poly(
-        { x: random(0, Game.width - 72), y: random(0, Game.height - 72), w: 72, h: 72, shape: 'triangle', color: 255, alpha: 0.01 }, [
+        { x: random(0, Game.width - 24), y: random(0, Game.height - 24), w: 24, h: 24, color: 255, alpha: 0.01 }, [
           { delay: 33000, duration: 0, props: { alpha: 255 }},
           { delay: 11000, duration: 0, props: { alpha: 0 }}
         ])
@@ -110,7 +110,7 @@ class Snap extends Scene {
 
     this.safe_shapes.push(
       new Poly(
-        { x: random(0, Game.width - 24), y: random(0, Game.height - 24), w: 24, h: 24, color: 255, alpha: 0.01 }, [
+        { x: random(0, Game.width - 16), y: random(0, Game.height - 16), w: 16, h: 16, color: 255, alpha: 0.01 }, [
           { delay: 44000, duration: 0, props: { alpha: 255 }},
           { delay: 11000, duration: 0, props: { alpha: 0 }}
         ])

@@ -10,11 +10,21 @@ class Scene {
     return { delay: 4000, duration: 0, props: {}}
   }
 
-  createCollision(shape, index) {
-    Game.hits[index] = collideRectCircle(
-      shape.x, shape.y, shape.w, shape.h,
-      Game.bug.pos.x, Game.bug.pos.y, Game.bug.radius
-    )
+  createCollision(shape, index, type = 'rect') {
+    switch (type) {
+      case 'rect' :
+        Game.hits[index] = collideRectCircle(
+          shape.x, shape.y, shape.w, shape.h,
+          Game.bug.pos.x, Game.bug.pos.y, Game.bug.radius
+        )
+        break
+      case 'circle' :
+        Game.hits[index] = collideCircleCircle(
+          shape.x + shape.d / 2, shape.y + shape.d / 2, shape.d,
+          Game.bug.pos.x, Game.bug.pos.y, Game.bug.radius * 2
+        )
+        break
+    }
   }
 
   startSong(song) {

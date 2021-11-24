@@ -18,7 +18,7 @@ class Twitter extends Scene {
       shape.draw()
 
       if (this.transition.alpha < 5) {
-        this.createCollision(shape, i)
+        this.createCollision(shape, i, shape.shape)
       }
     })
 
@@ -50,7 +50,7 @@ class Twitter extends Scene {
     // Tweet
     let createTweet = (y) => {
       this.shapes.push(
-        new Poly({ x: 16, y: y - dist, w: 48, h: 48, shape: 'ellipse', color: color }, [
+        new Poly({ x: 16, y: y - dist, d: 48, shape: 'circle', color: color }, [
           { delay: 0, duration: dur, props: { y: y } }
         ]),
         new Poly({ x: 78, y: y + 12 - dist, w: random(48, 144), h: 8, color: color }, [
@@ -97,7 +97,7 @@ class Twitter extends Scene {
 
     // New Tweet
     this.shapes.push(
-      new Poly({ x: Game.width - 56, y: Game.height - 56, w: 48, h: 48, shape: 'ellipse', color: color }, [
+      new Poly({ x: Game.width - 56, y: Game.height - 56, d: 48, shape: 'circle', color: color }, [
         { delay: 0, duration: 0, props: { } }
       ])
     )

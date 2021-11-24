@@ -4,6 +4,7 @@ class Poly {
     this.y = options.y
     this.w = options.w
     this.h = options.h
+    this.d = options.d
 
     this.shape = options.shape || 'rect'
     this.color = options.color || 0
@@ -30,11 +31,9 @@ class Poly {
         rectMode(CORNER)
         rect(this.x, this.y, this.w, this.h)
         break
-      case 'ellipse' :
-        push()
-        ellipseMode(CORNER)
-        ellipse(this.x, this.y, this.w, this.h)
-        pop()
+      case 'circle' :
+        ellipseMode(CENTER)
+        ellipse(this.x + this.d / 2, this.y + this.d / 2, this.d)
         break
       case 'triangle' :
         triangle(
