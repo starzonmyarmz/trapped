@@ -50,11 +50,11 @@ class Messages extends Scene {
 
     for (let i = 0; i < 40; i++) {
       let prob = random() >=  0.5
-      let textw = random(40, 200)
+      let textw = random(40, 208)
       let texth = textw < 150 ? 32 : 32 * floor(random(1, 5))
-      let textx = prob ? 16 : Game.width - 16 - textw
+      let textx = prob ? 8 : Game.width - 8 - textw
       let texty = prevy
-      let trix = prob ? 8 : Game.width - 16
+      let trix = prob ? 0 : Game.width - 8
       let triy = prevy + texth - 8
       let tang = prob ? 'triangle_right' : 'triangle_left'
 
