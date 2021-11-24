@@ -10,6 +10,8 @@ cp -r lib/ dist/lib/
 
 minify styles.css > dist/styles.css
 minify index.html > dist/index.html
+minify favicon.svg > dist/favicon.svg
+minify apple-touch-icon.png > dist/apple-touch-icon.png
 
 # p5.scenemanager doesn't have a min version
 minify lib/p5.scenemanager.js > dist/lib/p5.scenemanager.js

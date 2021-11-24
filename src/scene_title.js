@@ -24,7 +24,7 @@ class Title extends Scene {
     text('settings', 12, 12)
 
     textAlign(CENTER, BOTTOM)
-    text('swipe to play', Game.width / 2, Game.height - 24)
+    text('swipe to begin', Game.width / 2, Game.height - 24)
 
     rectMode(CENTER)
     rect(Game.width / 2, Game.height - 72, 200, 48)
@@ -40,8 +40,6 @@ class Title extends Scene {
       }
     }
 
-    Game.bug.hidden = false
-
     this.transition_in.update()
     this.transition_in.draw()
 
@@ -56,6 +54,7 @@ class Title extends Scene {
     }
 
     if (this.transition_out.current == null && !this.transition_out.q.length) {
+      Game.bug.hidden = false
       this.endScene(localStorage.getItem('trapped_game_progress'))
     }
   }
