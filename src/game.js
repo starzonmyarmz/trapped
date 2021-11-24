@@ -34,7 +34,7 @@ const levels = {
 }
 
 // Globals
-let text_bold, text_regular, dummy, intro, tutorial, theme, dead, home, messages, twitter, music, maps, snap, finale, outro
+let text_bold, text_regular, dummy, intro, theme, dead, home, messages, twitter, music, maps, snap, finale, outro
 
 const requestAccess = () => {
   DeviceMotionEvent.requestPermission()
@@ -52,9 +52,6 @@ const requestAccess = () => {
 function preload() {
   angleMode(DEGREES)
   soundFormats('mp3')
-
-  // Load images
-  tutorial = loadImage('/assets/tutorial.gif')
 
   // Load fonts
   text_bold = loadFont('./assets/Outfit-ExtraBold.ttf')
