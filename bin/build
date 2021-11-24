@@ -2,20 +2,22 @@
 
 set -e
 
-mkdir -p dist
-mkdir -p dist/src
+mkdir -p trapped
+mkdir -p trapped/src
 
-cp -r assets/ dist/assets/
-cp -r lib/ dist/lib/
+cp -r assets/ trapped/assets/
+cp -r lib/ trapped/lib/
 
-minify styles.css > dist/styles.css
-minify index.html > dist/index.html
-minify favicon.svg > dist/favicon.svg
-minify apple-touch-icon.png > dist/apple-touch-icon.png
+minify styles.css > trapped/styles.css
+minify index.html > trapped/index.html
+minify favicon.svg > trapped/favicon.svg
+minify apple-touch-icon.png > trapped/apple-touch-icon.png
 
 # p5.scenemanager doesn't have a min version
-minify lib/p5.scenemanager.js > dist/lib/p5.scenemanager.js
+minify lib/p5.scenemanager.js > trapped/lib/p5.scenemanager.js
 
 for file in src/*; do
-  minify $file > dist/$file
+  minify $file > trapped/$file
 done
+
+rm trapped/assets/.DS_Store

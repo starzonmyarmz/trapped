@@ -1,0 +1,5 @@
+#!/bin/bash
+
+set -e
+
+zip -r trapped.zip trapped/*

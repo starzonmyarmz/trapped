@@ -1,4 +1,5 @@
-/dist
+/trapped
 /node_modules
 /refs/music/Backup
 /refs/music/Samples
+*.zip
