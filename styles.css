@@ -11,7 +11,7 @@ body {
   background: #000 url('assets/logo_white.png') 50% 50% no-repeat;
   background-size: 158px 19px;
   color: #fff;
-  font-family: 'Roboto';
+  font-family: sans-serif;
   margin: 0;
   overflow: hidden;
 }
@@ -30,10 +30,6 @@ canvas {
   max-height: 100%;
   object-fit: contain;
   width: revert !important;
-}
-
-.debug canvas {
-  border: 1px solid red;
 }
 
 .alert {
@@ -80,7 +76,7 @@ canvas {
 }
 
 #permission,
-#orientation {
+#mobile {
   align-items: center;
   background: #000;
   display: flex;
@@ -101,30 +97,15 @@ canvas {
   width: 100%;
 }
 
-#orientation {
+#mobile {
   display: none;
 }
 
-@media (orientation: landscape) {
-  html:not(.debug) #orientation {
+@media (min-width: 768px), (orientation: landscape) {
+  #mobile {
     display: grid;
     place-items: center;
   }
-}
-
-#debug {
-  color: red;
-  font-size: 12px;
-  left: 0;
-  position: fixed;
-  top: 0;
-}
-
-.reload {
-  color: #000;
-  font-size: 14px;
-  margin-top: -12px;
-  text-align: center;
 }
 
 [hidden] {
