@@ -25,6 +25,7 @@ class Intro extends Scene {
   }
 
   touchEnded() {
+    if (matchMedia('(min-width: 768px), (orientation: landscape)').matches) return
     if (!Game.permission) return
     if (this.intro_started) return
 
