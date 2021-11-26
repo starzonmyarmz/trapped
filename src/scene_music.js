@@ -63,7 +63,7 @@ class Music extends Scene {
 
     // Title
     this.shapes.push(
-      new Poly({ x: 16, y: 80, w: random(120, Game.width - 40), h: 32, color: color }, [
+      new Poly({ x: 0, y: 80, w: random(120, Game.width - 40), h: 32, color: color }, [
         { delay: 21000, duration: 2000, props: { y: 80 - 348 } },
       ])
     )
@@ -108,7 +108,7 @@ class Music extends Scene {
 
     // Title
     this.shapes.push(
-      new Poly({ x: 16, y: 428, w: random(120, Game.width - 40), h: 32, color: color }, [
+      new Poly({ x: 0, y: 428, w: random(120, Game.width - 40), h: 32, color: color }, [
         { delay: 21000, duration: 2000, props: { y: 428 - 348 } },
         { delay: 3000, duration: 5000, props: { y: 428 - 348 - 174 } },
       ])
@@ -137,7 +137,7 @@ class Music extends Scene {
 
     // Title
     this.shapes.push(
-      new Poly({ x: 16, y: 1016, w: random(120, Game.width - 40), h: 32, color: color }, [
+      new Poly({ x: 0, y: 1016, w: random(120, Game.width - 40), h: 32, color: color }, [
         { delay: 21000, duration: 2000, props: { y: 1016 - 348 } },
         { delay: 3000, duration: 5000, props: { y: 1016 - 348 - 174 } },
         { delay: 5000, duration: 1000, props: { y: 1016 - 348 - 174 - 242 } },
