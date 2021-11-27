@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
       await navigator.share({
         title: document.querySelector('title'),
         text: document.querySelector('meta[name="description"]').content,
-        url: 'https://iamdanielmarino.com'
+        url: 'https://starzonmyarmz.github.io/trapped'
       })
     })
   }
