@@ -10,8 +10,9 @@ cp -r lib/ trapped/lib/
 
 minify styles.css > trapped/styles.css
 minify index.html > trapped/index.html
-minify favicon.svg > trapped/favicon.svg
-minify apple-touch-icon.png > trapped/apple-touch-icon.png
+
+cp favicon.svg trapped/favicon.svg
+cp apple-touch-icon.png trapped/apple-touch-icon.png
 
 # p5.scenemanager doesn't have a min version
 minify lib/p5.scenemanager.js > trapped/lib/p5.scenemanager.js
