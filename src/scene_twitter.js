@@ -59,7 +59,7 @@ class Twitter extends Scene {
         new Poly({ x: 56, y: y + 28 - dist, w: random(48, 144), h: 8, color: color }, [
           { delay: 0, duration: dur, props: { y: y + 28 } }
         ]),
-        new Poly({ x: 300, y: y + 14 - dist, w: 16, h: 4, color: color }, [
+        new Poly({ x: 304, y: y + 14 - dist, w: 16, h: 4, color: color }, [
           { delay: 0, duration: dur, props: { y: y + 14 } }
         ])
       )
@@ -76,9 +76,7 @@ class Twitter extends Scene {
 
       next_y = next_y + 96 + (l * 12)
 
-      let p = random() > 0.5
-
-      if (p) {
+      if (random() > 0.7) {
         let h = random(125, 250)
 
         this.shapes.push(
@@ -86,6 +84,14 @@ class Twitter extends Scene {
             { delay: 0, duration: dur, props: { y: next_y } }
           ])
         )
+
+        if (random() > 0.7) {
+          this.shapes.push(
+            new Poly({ x: 300, y: next_y - dist, w: 20, h: h, color: color }, [
+              { delay: 0, duration: dur, props: { y: next_y } }
+            ])
+          )
+        }
 
         next_y = next_y + h + 24
       }
