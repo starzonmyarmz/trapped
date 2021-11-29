@@ -12,33 +12,68 @@ class HomeMessages extends Scene {
       this.song_started = true
     }
 
-    Game.shapes = this.shapes
-    Game.shapes.forEach((shape, i) => {
-      shape.update()
-      shape.draw()
+    if (!this.tutorial_finished) {
+      Game.shapes = this.tutorial_square
+      Game.shapes.forEach((shape, i) => {
+        shape.update()
+        shape.draw()
+        if (this.transition_tutorial_in.alpha < 5) {
+          this.createCollision(shape, i)
+        }
+      })
 
-      if (this.transition.alpha < 5) {
-        this.createCollision(shape, i)
-      }
-    })
+      fill(0)
+      textSize(12)
+      textAlign(LEFT, TOP)
+      textFont(text_regular)
+      text("tilt your device\nto avoid colliding\nwith shapes", 172, 324)
+      textSize(10)
+      text("tap to continue", 172, 380)
+    }
 
-    this.transition_out.update()
-    this.transition_out.draw()
-    this.transition.update()
-    this.transition.draw()
+    this.transition_tutorial_in.update()
+    this.transition_tutorial_in.draw()
 
-    if (!this.transition.q.length && !this.song_stopped) {
+    if (this.tutorial_finished) {
+      Game.shapes = this.shapes
+      Game.shapes.forEach((shape, i) => {
+        shape.update()
+        shape.draw()
+        if (this.transition_tutorial_out[0].alpha < 5) {
+          this.createCollision(shape, i)
+        }
+      })
+
+      this.transition_out.update()
+      this.transition_out.draw()
+
+      this.transition_shapes.update()
+      this.transition_shapes.draw()
+
+      this.transition_tutorial_out.forEach((shape) => {
+        shape.update()
+        shape.draw()
+      })
+    }
+
+    if (!this.transition_shapes.q.length && !this.song_stopped) {
       this.endSong()
       this.song_stopped = true
     }
 
-    if (this.transition.current == null && !this.transition.q.length) {
+    if (this.transition_shapes.current == null && !this.transition_shapes.q.length) {
       this.saveProgress('Messages')
       this.endScene()
     }
   }
 
+
+  touchEnded() {
+    this.tutorial_finished = true
+  }
+
   reset() {
+    this.tutorial_finished = false
     this.song_started = false
     this.song_stopped = false
     this.shapes = []
@@ -63,15 +98,37 @@ class HomeMessages extends Scene {
       }
     }
 
-    this.transition = new Poly(
+    this.transition_shapes = new Poly(
       { x: 0, y: 0, w: Game.width, h: Game.height, color: 255 },
       [
-        this.startBuffer(),
-        { delay: 0, duration: 2000, props: { alpha: 0 }},
-        { delay: 12000, duration: 2000, props: { alpha: 255 }},
+        { delay: 0, duration: 0, props: { alpha: 0 }},
+        { delay: 16000, duration: 2000, props: { alpha: 255 }},
         this.endBuffer()
       ]
     )
+
+    this.tutorial_square = [new Poly(
+      { x: 172, y: 252, w: 48, h: 48, color: '#1a73e8' }, [])]
+
+    this.transition_tutorial_in = new Poly(
+        { x: 172, y: 252, w: 148, h: 180, color: 255, alpha: 255 },
+        [this.startBuffer(), { delay: 0, duration: 2000, props: { alpha: 0 } }]
+      )
+
+    this.transition_tutorial_out = [
+      new Poly(
+        { x: 0, y: 0, w: 172, h: Game.height, color: 255, alpha: 255 },
+        [{ delay: 0, duration: 2000, props: { alpha: 0 } }]
+      ),
+      new Poly(
+        { x: 220, y: 0, w: 100, h: 300, color: 255, alpha: 255 },
+        [{ delay: 0, duration: 2000, props: { alpha: 0 } }]
+      ),
+      new Poly(
+        { x: 172, y: 0, w: 48, h: 252, color: 255, alpha: 255 },
+        [{ delay: 0, duration: 2000, props: { alpha: 0 } }]
+      )
+    ]
 
     this.transition_out = new Poly(
       { x: 0, y: 0, w: 0, h: 0, color: '#1a73e8' },
