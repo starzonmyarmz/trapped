@@ -39,7 +39,8 @@ class HomeMessages extends Scene {
       Game.shapes.forEach((shape, i) => {
         shape.update()
         shape.draw()
-        if (this.transition_tutorial_out[0].alpha < 5) {
+
+        if (this.transition_tutorial_out[0].alpha < 5 && this.transition_shapes.alpha < 5) {
           this.createCollision(shape, i)
         }
       })
